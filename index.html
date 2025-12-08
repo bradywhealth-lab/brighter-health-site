@@ -907,4 +907,236 @@
           <div class="faq-q">Will you still help me after I enroll?</div>
           <div class="faq-a">
             Absolutely. I come with every policy I help you sign up for. That means you can call or
-            message me for questions, life changes, or issues instead
+            message me for questions, life changes, or issues instead of getting stuck on hold with
+            a generic customer service line.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">What types of plans do you offer?</div>
+          <div class="faq-a">
+            I have access to both public marketplace plans and private alternatives. This allows me
+            to compare options side-by-side and help you find the coverage that best fits your health,
+            lifestyle, and budget.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">How do I get started?</div>
+          <div class="faq-a">
+            Simply fill out the contact form below or give me a call. We'll schedule a free discovery
+            call where I'll learn about your situation and start putting together your personalized
+            options. There's no obligation — if your current plan is the best fit, I'll tell you.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <h2 class="section-title">Let's Talk About Your Coverage</h2>
+      <p class="section-subtitle">
+        Ready to explore your options? Fill out the form below and I'll reach out to schedule
+        your free coverage review. No pressure, no auto-dials — just honest guidance.
+      </p>
+
+      <div class="contact-grid">
+        <div class="card">
+          <form
+            action="https://formspree.io/f/mgvgleje"
+            method="POST"
+            data-formspree="true"
+            data-success-message="Thanks! I've received your request and will follow up with options."
+          >
+            <div class="field-group">
+              <label for="contact-name">Full Name</label>
+              <input type="text" id="contact-name" name="name" placeholder="Jane Doe" required />
+            </div>
+
+            <div class="field-group">
+              <label for="contact-email">Email</label>
+              <input type="email" id="contact-email" name="email" placeholder="you@example.com" required />
+            </div>
+
+            <div class="field-group">
+              <label for="contact-phone">Phone (call or text)</label>
+              <input type="tel" id="contact-phone" name="phone" placeholder="(555) 123-4567" required />
+            </div>
+
+            <div class="field-group">
+              <label for="contact-profile">Which best describes you?</label>
+              <select id="contact-profile" name="profile" required>
+                <option value="">Select one</option>
+                <option value="individual">Healthy individual</option>
+                <option value="family">Healthy family</option>
+                <option value="self-employed">Self-employed / 1099</option>
+                <option value="small-business-owner">Small business owner</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label for="contact-coverage">What do you have today?</label>
+              <select id="contact-coverage" name="current_coverage">
+                <option value="">Select one</option>
+                <option value="marketplace">Marketplace / ACA plan</option>
+                <option value="through-employer">Through employer</option>
+                <option value="short-term">Short-term or limited plan</option>
+                <option value="none">No current coverage</option>
+                <option value="unsure">Not sure / it's complicated</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label for="contact-message">How can I help?</label>
+              <textarea id="contact-message" name="message" placeholder="Tell me a bit about your situation or what you're looking for..."></textarea>
+            </div>
+
+            <input type="hidden" name="source" value="Main Website Contact Form" />
+
+            <button type="submit" class="btn btn-primary">
+              Request My Free Coverage Review
+            </button>
+
+            <p class="disclaimer">
+              By submitting, you agree that Brighter Health Solutions may contact you via phone, text,
+              or email regarding health coverage options. Your information will never be sold.
+            </p>
+          </form>
+        </div>
+
+        <div>
+          <div class="card" style="margin-bottom: 1rem;">
+            <h3>Prefer to reach out directly?</h3>
+            <p style="margin-top: 0.5rem;">
+              I'm available by phone, text, or email — whatever works best for you.
+            </p>
+            <div style="margin-top: 1rem;">
+              <div class="info-item-label">Call / Text</div>
+              <div class="info-item-value">
+                <a href="tel:+12393108926">(239) 310-8926</a><br />
+                <a href="tel:+19703065173">(970) 306-5173</a>
+              </div>
+            </div>
+            <div style="margin-top: 0.75rem;">
+              <div class="info-item-label">Email</div>
+              <div class="info-item-value">
+                <a href="mailto:bradyw.health@gmail.com">bradyw.health@gmail.com</a><br />
+                <a href="mailto:brighterhealthsolutions@gmail.com">brighterhealthsolutions@gmail.com</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Follow Along</h3>
+            <p style="margin-top: 0.5rem;">
+              Stay connected for tips, updates, and health coverage insights.
+            </p>
+            <div class="social-row" style="margin-top: 0.75rem;">
+              <span class="social-chip">
+                Instagram: <a href="https://www.instagram.com/healthwithbrady" target="_blank" rel="noopener">@healthwithbrady</a>
+              </span>
+              <span class="social-chip">
+                Facebook: <a href="https://www.facebook.com/brighterhealthsolutions" target="_blank" rel="noopener">Brighter Health Solutions</a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> Brighter Health Solutions LLC. All rights reserved.</span>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/healthwithbrady" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/brighterhealthsolutions" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<div class="toast" id="form-toast"></div>
+
+<script>
+  // Set current year in footer
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Simple toast function
+  function showToast(message, isError) {
+    var toast = document.getElementById('form-toast');
+    if (!toast) return;
+    toast.textContent = message;
+    toast.classList.remove('error');
+    if (isError) {
+      toast.classList.add('error');
+    }
+    toast.classList.add('show');
+
+    setTimeout(function () {
+      toast.classList.remove('show');
+    }, 4000);
+  }
+
+  // Attach Formspree AJAX handler to any form marked with data-formspree
+  var forms = document.querySelectorAll('form[data-formspree="true"]');
+  forms.forEach(function (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var submitButton = form.querySelector('button[type="submit"]');
+      var originalText = submitButton ? submitButton.textContent : '';
+
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
+      }
+
+      fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(function (response) {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = originalText;
+        }
+
+        if (response.ok) {
+          var successMessage = form.getAttribute('data-success-message') || 'Thank you! Your message has been sent.';
+          showToast(successMessage, false);
+          form.reset();
+        } else {
+          showToast('Something went wrong. Please try again or contact me directly.', true);
+        }
+      }).catch(function () {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = originalText;
+        }
+        showToast('Network error. Please try again or reach out by phone/email.', true);
+      });
+    });
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+    anchor.addEventListener('click', function (e) {
+      var href = this.getAttribute('href');
+      if (href && href.length > 1) {
+        var target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }
+    });
+  });
+</script>
+</body>
+</html>
