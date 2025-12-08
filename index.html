@@ -432,6 +432,141 @@
       color: var(--muted);
     }
 
+    .booking {
+      background: linear-gradient(135deg, #ffffff, #f2fbf7);
+      border-radius: var(--radius-lg);
+      padding: 1.6rem 1.5rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.1fr);
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .booking-copy {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .contact-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 0.75rem;
+      border-radius: 10px;
+      background: rgba(15, 157, 146, 0.12);
+      color: var(--primary-dark);
+      font-weight: 600;
+      border: 1px solid rgba(15, 157, 146, 0.2);
+      font-size: 0.88rem;
+    }
+
+    .chip:hover {
+      background: rgba(15, 157, 146, 0.18);
+    }
+
+    .hours-card {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.07);
+      display: grid;
+      gap: 0.65rem;
+    }
+
+    .hours-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .hours-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.5rem;
+    }
+
+    .hours-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.55rem 0.7rem;
+      border-radius: 10px;
+      background: rgba(15, 157, 146, 0.06);
+      border: 1px solid rgba(15, 157, 146, 0.12);
+      font-size: 0.88rem;
+    }
+
+    .hours-day {
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .hours-time {
+      color: var(--muted);
+    }
+
+    .calendly-panel {
+      background: #0f1b2e;
+      color: rgba(229, 231, 235, 0.92);
+      border-radius: var(--radius-lg);
+      padding: 1.2rem 1.1rem 1.25rem;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .calendly-header {
+      font-weight: 700;
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .calendly-note {
+      font-size: 0.82rem;
+      color: rgba(229, 231, 235, 0.75);
+    }
+
+    .calendly-shell {
+      min-height: 620px;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .calendly-placeholder {
+      padding: 1rem;
+      display: grid;
+      gap: 0.55rem;
+      text-align: left;
+      color: rgba(229, 231, 235, 0.92);
+      font-size: 0.9rem;
+    }
+
+    .fallback-buttons {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .calendly-popup-btn {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
     .contact-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
@@ -548,7 +683,8 @@
     @media (max-width: 900px) {
       .hero,
       .two-col,
-      .contact-grid {
+      .contact-grid,
+      .booking {
         grid-template-columns: minmax(0, 1fr);
       }
 
@@ -573,6 +709,10 @@
 
       .hero h1 {
         font-size: 1.9rem;
+      }
+
+      .calendly-shell {
+        min-height: 520px;
       }
     }
   </style>
@@ -869,6 +1009,7 @@
     </section>
 
     <!-- FAQ -->
+    <!-- FAQ -->
     <section class="section" id="faq">
       <h2 class="section-title">Frequently Asked Questions</h2>
       <p class="section-subtitle">
@@ -907,4 +1048,126 @@
           <div class="faq-q">Will you still help me after I enroll?</div>
           <div class="faq-a">
             Absolutely. I come with every policy I help you sign up for. That means you can call or
-            message me for questions, life changes, or issues instead
+            message me for questions, life changes, or issues instead of waiting on hold with a call center.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT / BOOKING -->
+    <section class="section" id="contact">
+      <div class="booking">
+        <div class="booking-copy">
+          <div class="badge">Book a Call</div>
+          <h2 class="section-title">Pick a time that works for you.</h2>
+          <p class="section-subtitle">
+            Use the online scheduler to grab a no-pressure coverage review with Brady. If you prefer,
+            call, text, or email and you’ll get the same personal support without call-center delays.
+          </p>
+
+          <div class="contact-chips" aria-label="Direct contact options">
+            <a class="chip" href="tel:+12393108926">Call/Text (239) 310-8926</a>
+            <a class="chip" href="tel:+19703065173">Call/Text (970) 306-5173</a>
+            <a class="chip" href="mailto:bradyw.health@gmail.com">Email Brady</a>
+          </div>
+
+          <div class="hours-card" aria-label="Weekly availability">
+            <div class="hours-title">Weekly availability</div>
+            <div class="hours-grid">
+              <div class="hours-item"><span class="hours-day">Sunday</span><span class="hours-time">By appointment</span></div>
+              <div class="hours-item"><span class="hours-day">Monday</span><span class="hours-time">By appointment</span></div>
+              <div class="hours-item"><span class="hours-day">Tuesday</span><span class="hours-time">By appointment</span></div>
+              <div class="hours-item"><span class="hours-day">Wednesday</span><span class="hours-time">By appointment</span></div>
+              <div class="hours-item"><span class="hours-day">Thursday</span><span class="hours-time">By appointment</span></div>
+              <div class="hours-item"><span class="hours-day">Friday</span><span class="hours-time">By appointment</span></div>
+              <div class="hours-item"><span class="hours-day">Saturday</span><span class="hours-time">By appointment</span></div>
+            </div>
+            <p class="helper">Update these hours as needed; Calendly will honor your live availability.</p>
+          </div>
+        </div>
+
+        <div class="calendly-panel">
+          <div class="calendly-header">
+            Schedule online
+            <span class="calendly-note">Zero-cost, no-obligation chat</span>
+          </div>
+          <div id="calendly-widget" class="calendly-shell" data-calendly-url="https://calendly.com/YOUR-CALENDLY-LINK/coverage-review">
+            <div class="calendly-placeholder">
+              <p>Online booking will display here after adding your Calendly link.</p>
+              <p class="helper">Replace the placeholder URL above with your live event link.</p>
+              <div class="fallback-buttons">
+                <a class="btn btn-primary" href="tel:+12393108926">Call now</a>
+                <a class="btn btn-outline" href="mailto:bradyw.health@gmail.com">Email instead</a>
+              </div>
+            </div>
+          </div>
+          <button id="calendly-popup" class="btn btn-primary calendly-popup-btn" type="button" aria-live="polite">
+            Open scheduler in a new window
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>Brighter Health Solutions LLC · Independent Health Insurance Advisor</div>
+      <div class="footer-social">
+        <a href="mailto:bradyw.health@gmail.com">bradyw.health@gmail.com</a>
+        <a href="https://www.instagram.com/healthwithbrady" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/brighterhealthsolutions" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" />
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+  (() => {
+    const container = document.getElementById('calendly-widget');
+    const popupBtn = document.getElementById('calendly-popup');
+    const url = container?.dataset.calendlyUrl?.trim();
+    const hasUrl = Boolean(url && !url.includes('YOUR-CALENDLY-LINK'));
+
+    const renderInline = () => {
+      if (!hasUrl || !window.Calendly || !container) return;
+      container.innerHTML = '';
+      window.Calendly.initInlineWidget({
+        url,
+        parentElement: container
+      });
+    };
+
+    const enablePopup = () => {
+      if (!popupBtn) return;
+      if (!hasUrl) {
+        popupBtn.style.display = 'none';
+        return;
+      }
+      popupBtn.style.display = 'inline-flex';
+      popupBtn.addEventListener('click', () => {
+        if (window.Calendly) {
+          window.Calendly.initPopupWidget({ url });
+        }
+      });
+    };
+
+    window.addEventListener('load', () => {
+      if (hasUrl) {
+        const waitForCalendly = setInterval(() => {
+          if (window.Calendly) {
+            clearInterval(waitForCalendly);
+            renderInline();
+            enablePopup();
+          }
+        }, 150);
+        setTimeout(() => clearInterval(waitForCalendly), 8000);
+      } else {
+        enablePopup();
+      }
+    });
+  })();
+</script>
+</body>
+</html>
