@@ -1082,28 +1082,25 @@
               <div class="hours-item"><span class="hours-day">Friday</span><span class="hours-time">By appointment</span></div>
               <div class="hours-item"><span class="hours-day">Saturday</span><span class="hours-time">By appointment</span></div>
             </div>
-            <p class="helper">Update these hours as needed; Calendly will honor your live availability.</p>
+            <p class="helper">Update these hours as needed; Google Calendar will honor your live availability.</p>
           </div>
         </div>
 
         <div class="calendly-panel">
           <div class="calendly-header">
             Schedule online
-            <span class="calendly-note">Zero-cost, no-obligation chat</span>
+            <span class="calendly-note">Instant booking via Google Calendar</span>
           </div>
-          <div id="calendly-widget" class="calendly-shell" data-calendly-url="https://calendly.com/YOUR-CALENDLY-LINK/coverage-review">
+          <div class="calendly-shell" role="presentation">
             <div class="calendly-placeholder">
-              <p>Online booking will display here after adding your Calendly link.</p>
-              <p class="helper">Replace the placeholder URL above with your live event link.</p>
+              <p>Pick a time on Google Calendar and you’ll get an instant confirmation plus a calendar invite.</p>
+              <p class="helper">Google will show your local time zone and current availability.</p>
               <div class="fallback-buttons">
-                <a class="btn btn-primary" href="tel:+12393108926">Call now</a>
+                <a class="btn btn-primary" href="https://calendar.app.google/EwJqKQHiB7iZ8qXy8" target="_blank" rel="noopener">Book on Google Calendar</a>
                 <a class="btn btn-outline" href="mailto:bradyw.health@gmail.com">Email instead</a>
               </div>
             </div>
           </div>
-          <button id="calendly-popup" class="btn btn-primary calendly-popup-btn" type="button" aria-live="polite">
-            Open scheduler in a new window
-          </button>
         </div>
       </div>
     </section>
@@ -1121,53 +1118,5 @@
   </footer>
 </div>
 
-<link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" />
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-<script>
-  (() => {
-    const container = document.getElementById('calendly-widget');
-    const popupBtn = document.getElementById('calendly-popup');
-    const url = container?.dataset.calendlyUrl?.trim();
-    const hasUrl = Boolean(url && !url.includes('YOUR-CALENDLY-LINK'));
-
-    const renderInline = () => {
-      if (!hasUrl || !window.Calendly || !container) return;
-      container.innerHTML = '';
-      window.Calendly.initInlineWidget({
-        url,
-        parentElement: container
-      });
-    };
-
-    const enablePopup = () => {
-      if (!popupBtn) return;
-      if (!hasUrl) {
-        popupBtn.style.display = 'none';
-        return;
-      }
-      popupBtn.style.display = 'inline-flex';
-      popupBtn.addEventListener('click', () => {
-        if (window.Calendly) {
-          window.Calendly.initPopupWidget({ url });
-        }
-      });
-    };
-
-    window.addEventListener('load', () => {
-      if (hasUrl) {
-        const waitForCalendly = setInterval(() => {
-          if (window.Calendly) {
-            clearInterval(waitForCalendly);
-            renderInline();
-            enablePopup();
-          }
-        }, 150);
-        setTimeout(() => clearInterval(waitForCalendly), 8000);
-      } else {
-        enablePopup();
-      }
-    });
-  })();
-</script>
 </body>
 </html>
