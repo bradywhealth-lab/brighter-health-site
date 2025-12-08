@@ -253,6 +253,22 @@
       box-shadow: 0 16px 35px rgba(15, 157, 146, 0.45);
     }
 
+    .btn-outline {
+      border-radius: 999px;
+      padding: 0.68rem 1.1rem;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: transparent;
+      color: var(--primary-dark);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary-dark);
+      color: var(--primary);
+    }
+
     .btn-primary:hover {
       filter: brightness(0.96);
     }
@@ -296,6 +312,65 @@
       font-size: 0.75rem;
       background: rgba(15, 157, 146, 0.07);
       border: 1px solid rgba(148, 163, 184, 0.5);
+    }
+
+    .hidden { display: none !important; }
+
+    .auth-block {
+      margin-top: 1.35rem;
+      padding: 1rem 0.9rem;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, #ffffff, #f2fbf8);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .auth-block-title {
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .auth-block-sub {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .auth-status {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.55rem;
+      align-items: center;
+      padding: 0.65rem 0.7rem;
+      border-radius: 12px;
+      background: rgba(15, 157, 146, 0.06);
+      margin-bottom: 0.6rem;
+    }
+
+    .status-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 999px;
+      background: #f59e0b;
+      box-shadow: 0 0 0 5px rgba(245, 158, 11, 0.18);
+    }
+
+    .status-dot.success {
+      background: #0f9d92;
+      box-shadow: 0 0 0 5px rgba(15, 157, 146, 0.18);
+    }
+
+    .auth-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .auth-actions .btn-primary,
+    .auth-actions .btn-outline {
+      width: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
 
     footer {
@@ -523,6 +598,35 @@
           or email regarding health coverage options. Your information will never be sold.
         </div>
       </form>
+
+      <div class="auth-block" aria-label="GitHub sign-in">
+        <div class="auth-block-title">Already working with me?</div>
+        <div class="auth-block-sub">Sign in with your GitHub account to see secure plan notes and shared files.</div>
+
+        <div class="auth-status" data-auth-state="signed-out">
+          <div class="status-dot"></div>
+          <div>
+            <strong>Not signed in</strong>
+            <div class="micro-text">Click below to authenticate through GitHub.</div>
+          </div>
+        </div>
+
+        <div class="auth-status hidden" data-auth-state="signed-in">
+          <div class="status-dot success"></div>
+          <div>
+            <strong>Signed in as <span data-auth-user>Guest</span></strong>
+            <div class="micro-text">You’re good to go for secure resources.</div>
+          </div>
+        </div>
+
+        <div class="auth-actions">
+          <button class="btn-primary" type="button" data-auth-login>Sign in with GitHub</button>
+          <button class="btn-outline hidden" type="button" data-auth-logout>Log out</button>
+          <button class="btn-outline hidden" type="button" data-auth-manage>Manage profile</button>
+        </div>
+
+        <p class="micro-text" style="margin-top: 0.45rem;">Need help? I can send a GitHub sign-in link during our call.</p>
+      </div>
     </aside>
   </main>
 
@@ -537,67 +641,124 @@
 
 <div class="toast" id="form-toast"></div>
 
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
 <script>
-  // Set current year in footer
-  document.getElementById("year").textContent = new Date().getFullYear();
-
-  // Simple toast function
-  function showToast(message, isError) {
+  document.addEventListener('DOMContentLoaded', function () {
     var toast = document.getElementById('form-toast');
-    if (!toast) return;
-    toast.textContent = message;
-    toast.classList.remove('error');
-    if (isError) {
-      toast.classList.add('error');
-    }
-    toast.classList.add('show');
 
-    setTimeout(function () {
-      toast.classList.remove('show');
-    }, 4000);
-  }
-
-  // Attach Formspree AJAX handler to any form marked with data-formspree
-  var forms = document.querySelectorAll('form[data-formspree="true"]');
-  forms.forEach(function (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      var submitButton = form.querySelector('button[type="submit"]');
-      var originalText = submitButton ? submitButton.textContent : '';
-
-      if (submitButton) {
-        submitButton.disabled = true;
-        submitButton.textContent = 'Sending...';
+    function showToast(message, isError) {
+      if (!toast) return;
+      toast.textContent = message;
+      toast.classList.remove('error');
+      if (isError) {
+        toast.classList.add('error');
       }
+      toast.classList.add('show');
+      setTimeout(function () { toast.classList.remove('show'); }, 4000);
+    }
 
-      fetch(form.action, {
-        method: form.method,
-        body: new FormData(form),
-        headers: {
-          'Accept': 'application/json'
-        }
-      }).then(function (response) {
-        if (submitButton) {
-          submitButton.disabled = false;
-          submitButton.textContent = originalText;
-        }
+    function setYear() {
+      var yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+    }
 
-        if (response.ok) {
-          var successMessage = form.getAttribute('data-success-message') || 'Thank you! Your message has been sent.';
-          showToast(successMessage, false);
-          form.reset();
-        } else {
-          showToast('Something went wrong. Please try again or contact me directly.', true);
-        }
-      }).catch(function () {
-        if (submitButton) {
-          submitButton.disabled = false;
-          submitButton.textContent = originalText;
-        }
-        showToast('Network error. Please try again or reach out by phone/email.', true);
+    function attachForms() {
+      var forms = document.querySelectorAll('form[data-formspree="true"]');
+      forms.forEach(function (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+
+          var submitButton = form.querySelector('button[type="submit"]');
+          var originalText = submitButton ? submitButton.textContent : '';
+
+          if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+          }
+
+          fetch(form.action, {
+            method: form.method,
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          }).then(function (response) {
+            if (submitButton) {
+              submitButton.disabled = false;
+              submitButton.textContent = originalText;
+            }
+
+            if (response.ok) {
+              var successMessage = form.getAttribute('data-success-message') || 'Thank you! Your message has been sent.';
+              showToast(successMessage, false);
+              form.reset();
+            } else {
+              showToast('Something went wrong. Please try again or contact me directly.', true);
+            }
+          }).catch(function () {
+            if (submitButton) {
+              submitButton.disabled = false;
+              submitButton.textContent = originalText;
+            }
+            showToast('Network error. Please try again or reach out by phone/email.', true);
+          });
+        });
       });
-    });
+    }
+
+    function updateAuthUI(user) {
+      var signedIn = !!user;
+      var name = signedIn ? (user.user_metadata && user.user_metadata.full_name) || user.email || 'You' : 'Guest';
+      document.querySelectorAll('[data-auth-user]').forEach(function (el) { el.textContent = name; });
+      document.querySelectorAll('[data-auth-state="signed-in"]').forEach(function (el) { el.classList.toggle('hidden', !signedIn); });
+      document.querySelectorAll('[data-auth-state="signed-out"]').forEach(function (el) { el.classList.toggle('hidden', signedIn); });
+      document.querySelectorAll('[data-auth-login]').forEach(function (el) { el.classList.toggle('hidden', signedIn); });
+      document.querySelectorAll('[data-auth-logout]').forEach(function (el) { el.classList.toggle('hidden', !signedIn); });
+      document.querySelectorAll('[data-auth-manage]').forEach(function (el) { el.classList.toggle('hidden', !signedIn); });
+    }
+
+    function initIdentity() {
+      if (!window.netlifyIdentity) return;
+      updateAuthUI(netlifyIdentity.currentUser());
+
+      netlifyIdentity.on('login', function (user) {
+        updateAuthUI(user);
+        showToast('Signed in with GitHub', false);
+        netlifyIdentity.close();
+      });
+
+      netlifyIdentity.on('logout', function () {
+        updateAuthUI(null);
+        showToast('Signed out', false);
+      });
+
+      netlifyIdentity.init();
+
+      document.querySelectorAll('[data-auth-login]').forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          netlifyIdentity.authenticate({ provider: 'github' }).catch(function () {
+            netlifyIdentity.open('login');
+          });
+        });
+      });
+
+      document.querySelectorAll('[data-auth-logout]').forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          netlifyIdentity.logout();
+        });
+      });
+
+      document.querySelectorAll('[data-auth-manage]').forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          netlifyIdentity.open('user');
+        });
+      });
+    }
+
+    setYear();
+    attachForms();
+    initIdentity();
   });
 </script>
 </body>

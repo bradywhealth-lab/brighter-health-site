@@ -545,6 +545,53 @@
       pointer-events: auto;
     }
 
+    .hidden {
+      display: none !important;
+    }
+
+    .auth-card {
+      background: linear-gradient(135deg, #ffffff, #f0fbf9);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .auth-status {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.65rem;
+      align-items: center;
+      padding: 0.75rem 0.8rem;
+      border-radius: 12px;
+      background: rgba(15, 157, 146, 0.06);
+    }
+
+    .status-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: #f59e0b;
+      box-shadow: 0 0 0 6px rgba(245, 158, 11, 0.18);
+    }
+
+    .status-dot.success {
+      background: #0f9d92;
+      box-shadow: 0 0 0 6px rgba(15, 157, 146, 0.18);
+    }
+
+    .auth-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      align-items: center;
+    }
+
+    .auth-hint {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
     @media (max-width: 900px) {
       .hero,
       .two-col,
@@ -907,4 +954,281 @@
           <div class="faq-q">Will you still help me after I enroll?</div>
           <div class="faq-a">
             Absolutely. I come with every policy I help you sign up for. That means you can call or
-            message me for questions, life changes, or issues instead
+            message me for questions, life changes, or issues instead of a call center.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLIENT ACCESS -->
+    <section class="section" id="client-access">
+      <div class="two-col">
+        <div>
+          <div class="badge">Secure client access</div>
+          <h2 class="section-title">Use GitHub to verify it’s you.</h2>
+          <p class="section-subtitle">
+            Connect with the same GitHub account you already use so I can securely share quotes,
+            plan comparisons, and ongoing updates without extra passwords.
+          </p>
+          <div class="list">
+            <div class="list-item">
+              <span class="list-bullet">•</span>
+              <span>GitHub acts as the identity provider; I never see your password.</span>
+            </div>
+            <div class="list-item">
+              <span class="list-bullet">•</span>
+              <span>One click to sign in across the main site and landing page.</span>
+            </div>
+            <div class="list-item">
+              <span class="list-bullet">•</span>
+              <span>Instantly know whether you’re signed in with the status badge below.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card auth-card" aria-label="GitHub sign-in card">
+          <div class="auth-status" data-auth-state="signed-out">
+            <div class="status-dot"></div>
+            <div>
+              <strong>Ready to connect</strong>
+              <div class="helper">GitHub will handle authentication for your account.</div>
+            </div>
+          </div>
+          <div class="auth-status hidden" data-auth-state="signed-in">
+            <div class="status-dot success"></div>
+            <div>
+              <strong>Signed in as <span data-auth-user>Guest</span></strong>
+              <div class="helper">You’re set to view secure resources and updates.</div>
+            </div>
+          </div>
+          <div class="auth-actions">
+            <button class="btn btn-primary" data-auth-login>Sign in with GitHub</button>
+            <button class="btn btn-outline hidden" data-auth-logout>Log out</button>
+            <button class="btn btn-outline hidden" data-auth-manage>Manage profile</button>
+          </div>
+          <p class="auth-hint">First time signing in? Choose “GitHub” when prompted — no new password needed.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="contact-grid">
+        <div>
+          <div class="badge">Book a call</div>
+          <h2 class="section-title">Talk through your options</h2>
+          <p class="section-subtitle">
+            Tell me what you’re looking for and I’ll prepare a short list of smart, affordable choices —
+            often including private-market alternatives the marketplaces don’t show.
+          </p>
+          <div class="list">
+            <div class="list-item">
+              <span class="list-bullet">•</span>
+              <span>Personalized recommendations for healthy individuals, families, and lean teams.</span>
+            </div>
+            <div class="list-item">
+              <span class="list-bullet">•</span>
+              <span>Guided enrollment and ongoing support after you’re covered.</span>
+            </div>
+            <div class="list-item">
+              <span class="list-bullet">•</span>
+              <span>Direct contact — skip the call-center scripts.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <form
+            action="https://formspree.io/f/mgvgleje"
+            method="POST"
+            data-formspree="true"
+            data-success-message="Thanks! I’ve received your request and will follow up with options."
+          >
+            <div class="field-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" placeholder="Jane Doe" required />
+            </div>
+
+            <div class="field-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required />
+            </div>
+
+            <div class="field-group">
+              <label for="phone">Phone (call or text)</label>
+              <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" required />
+            </div>
+
+            <div class="field-group">
+              <label for="profile">Which best describes you?</label>
+              <select id="profile" name="profile" required>
+                <option value="">Select one</option>
+                <option value="individual">Healthy individual</option>
+                <option value="family">Healthy family</option>
+                <option value="self-employed">Self-employed / 1099</option>
+                <option value="small-business-owner">Small business owner</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label for="coverage">What do you have today?</label>
+              <select id="coverage" name="current_coverage">
+                <option value="">Select one</option>
+                <option value="marketplace">Marketplace / ACA plan</option>
+                <option value="through-employer">Through employer</option>
+                <option value="short-term">Short-term or limited plan</option>
+                <option value="none">No current coverage</option>
+                <option value="unsure">Not sure / it’s complicated</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label for="message">Anything specific you’d like help with?</label>
+              <textarea id="message" name="message" placeholder="Example: Comparing my current marketplace plan with other options for my family."></textarea>
+            </div>
+
+            <input type="hidden" name="source" value="Homepage" />
+
+            <button type="submit" class="btn btn-primary">
+              Schedule a Free Coverage Review
+            </button>
+
+            <p class="disclaimer">
+              By submitting, you agree that Brighter Health Solutions may contact you via phone, text, or email regarding
+              health coverage options. Your information will never be sold.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" role="status" aria-live="polite"></div>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> Brighter Health Solutions LLC.</span>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/healthwithbrady" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/brighterhealthsolutions" target="_blank" rel="noopener">Facebook</a>
+        <a href="mailto:bradyw.health@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
+<script>
+(function () {
+  var toast = document.querySelector('.toast');
+
+  function showToast(message, isError) {
+    if (!toast) return;
+    toast.textContent = message;
+    toast.classList.remove('error');
+    if (isError) toast.classList.add('error');
+    toast.classList.add('show');
+    setTimeout(function () { toast.classList.remove('show'); }, 3800);
+  }
+
+  function setYear() {
+    var yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+  }
+
+  function initForms() {
+    var forms = document.querySelectorAll('form[data-formspree="true"]');
+    forms.forEach(function (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var submitButton = form.querySelector('button[type="submit"]');
+        var originalText = submitButton ? submitButton.textContent : '';
+        if (submitButton) {
+          submitButton.disabled = true;
+          submitButton.textContent = 'Sending...';
+        }
+        fetch(form.action, {
+          method: form.method,
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        }).then(function (response) {
+          if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.textContent = originalText;
+          }
+          if (response.ok) {
+            var successMessage = form.getAttribute('data-success-message') || 'Thank you! Your message has been sent.';
+            showToast(successMessage, false);
+            form.reset();
+          } else {
+            showToast('Something went wrong. Please try again or contact me directly.', true);
+          }
+        }).catch(function () {
+          if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.textContent = originalText;
+          }
+          showToast('Network error. Please try again or reach out by phone/email.', true);
+        });
+      });
+    });
+  }
+
+  function updateAuthUI(user) {
+    var signedIn = !!user;
+    var name = signedIn ? (user.user_metadata && user.user_metadata.full_name) || user.email || 'You' : 'Guest';
+    document.querySelectorAll('[data-auth-user]').forEach(function (el) { el.textContent = name; });
+    document.querySelectorAll('[data-auth-state="signed-in"]').forEach(function (el) { el.classList.toggle('hidden', !signedIn); });
+    document.querySelectorAll('[data-auth-state="signed-out"]').forEach(function (el) { el.classList.toggle('hidden', signedIn); });
+    document.querySelectorAll('[data-auth-login]').forEach(function (el) { el.classList.toggle('hidden', signedIn); });
+    document.querySelectorAll('[data-auth-logout]').forEach(function (el) { el.classList.toggle('hidden', !signedIn); });
+    document.querySelectorAll('[data-auth-manage]').forEach(function (el) { el.classList.toggle('hidden', !signedIn); });
+  }
+
+  function initIdentity() {
+    if (!window.netlifyIdentity) return;
+    updateAuthUI(netlifyIdentity.currentUser());
+    netlifyIdentity.on('login', function (user) {
+      updateAuthUI(user);
+      showToast('Signed in with GitHub', false);
+      netlifyIdentity.close();
+    });
+    netlifyIdentity.on('logout', function () {
+      updateAuthUI(null);
+      showToast('Signed out', false);
+    });
+    netlifyIdentity.init();
+
+    document.querySelectorAll('[data-auth-login]').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        netlifyIdentity.authenticate({ provider: 'github' }).catch(function () {
+          netlifyIdentity.open('login');
+        });
+      });
+    });
+
+    document.querySelectorAll('[data-auth-logout]').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        netlifyIdentity.logout();
+      });
+    });
+
+    document.querySelectorAll('[data-auth-manage]').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        netlifyIdentity.open('user');
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    setYear();
+    initForms();
+    initIdentity();
+  });
+})();
+</script>
+</body>
+</html>
