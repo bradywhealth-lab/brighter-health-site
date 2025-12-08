@@ -1,0 +1,26 @@
+{
+  "name": "repo",
+  "version": "1.0.0",
+  "description": "Brighter Health Solutions LLC website (Brady Wilson – Independent Health Insurance Advisor)",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "netlify dev",
+    "build": "netlify build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bradywhealth-lab/brighter-health-site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bradywhealth-lab/brighter-health-site/issues"
+  },
+  "homepage": "https://github.com/bradywhealth-lab/brighter-health-site#readme",
+  "dependencies": {
+    "@netlify/functions": "^5.1.1",
+    "@netlify/neon": "^0.1.0"
+  }
+}
