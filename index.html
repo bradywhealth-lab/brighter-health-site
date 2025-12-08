@@ -716,6 +716,8 @@
       }
     }
   </style>
+  <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet" />
+  <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
 </head>
 <body>
 <div class="page">
@@ -774,7 +776,14 @@
         </div>
 
         <div class="hero-cta-row">
-          <a href="https://calendar.app.google/EwJqKQHiB7iZ8qXy8" class="btn btn-primary" target="_blank" rel="noopener">
+          <a
+            id="hero-schedule-btn"
+            href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1TqeUJLjIYsQcrJ8kRepQ25b1fU8BYUbROpH9FyyZi3yKyFmVQcXQcHnY5zUC47IsKBauHPLBo?gv=true"
+            class="btn btn-primary"
+            target="_blank"
+            rel="noopener"
+            data-schedule-trigger="true"
+          >
             Schedule a Free Coverage Review
           </a>
           <a href="landing.html" class="btn btn-outline">
@@ -1096,7 +1105,16 @@
               <p>Pick a time on Google Calendar and you’ll get an instant confirmation plus a calendar invite.</p>
               <p class="helper">Google will show your local time zone and current availability.</p>
               <div class="fallback-buttons">
-                <a class="btn btn-primary" href="https://calendar.app.google/EwJqKQHiB7iZ8qXy8" target="_blank" rel="noopener">Book on Google Calendar</a>
+                <a
+                  id="contact-schedule-btn"
+                  class="btn btn-primary"
+                  href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1TqeUJLjIYsQcrJ8kRepQ25b1fU8BYUbROpH9FyyZi3yKyFmVQcXQcHnY5zUC47IsKBauHPLBo?gv=true"
+                  target="_blank"
+                  rel="noopener"
+                  data-schedule-trigger="true"
+                >
+                  Book on Google Calendar
+                </a>
                 <a class="btn btn-outline" href="mailto:bradyw.health@gmail.com">Email instead</a>
               </div>
             </div>
@@ -1117,6 +1135,25 @@
     </div>
   </footer>
 </div>
+
+<script>
+  (function() {
+    var scheduleUrl = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ1TqeUJLjIYsQcrJ8kRepQ25b1fU8BYUbROpH9FyyZi3yKyFmVQcXQcHnY5zUC47IsKBauHPLBo?gv=true';
+
+    function openSchedule(event) {
+      if (event) event.preventDefault();
+      var newTab = window.open(scheduleUrl, '_blank', 'noopener');
+      if (newTab) {
+        newTab.focus();
+      }
+    }
+
+    document.querySelectorAll('[data-schedule-trigger="true"]').forEach(function(btn) {
+      btn.setAttribute('href', scheduleUrl);
+      btn.addEventListener('click', openSchedule);
+    });
+  })();
+</script>
 
 </body>
 </html>
