@@ -283,6 +283,14 @@
       font-weight: 600;
     }
 
+    .hidden-field {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
     .pill-row {
       display: flex;
       flex-wrap: wrap;
@@ -450,11 +458,17 @@
       </div>
 
       <form
-        action="https://formspree.io/f/mgvgleje"
+        name="coverage-review"
+        action="/success.html"
         method="POST"
-        data-formspree="true"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
         data-success-message="Thanks! I’ve received your request and will follow up with options."
       >
+        <input type="hidden" name="form-name" value="coverage-review" />
+        <p class="hidden-field">
+          <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+        </p>
         <div class="field-group">
           <label for="name">Full Name</label>
           <input type="text" id="name" name="name" placeholder="Jane Doe" required />
@@ -557,8 +571,16 @@
     }, 4000);
   }
 
-  // Attach Formspree AJAX handler to any form marked with data-formspree
-  var forms = document.querySelectorAll('form[data-formspree="true"]');
+  // Attach Netlify AJAX handler to any form marked with data-netlify
+  function encode(data) {
+    return Object.keys(data)
+      .map(function (key) {
+        return encodeURIComponent(key) + '=' + encodeURIComponent(data[key]);
+      })
+      .join('&');
+  }
+
+  var forms = document.querySelectorAll('form[data-netlify="true"]');
   forms.forEach(function (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -566,17 +588,31 @@
       var submitButton = form.querySelector('button[type="submit"]');
       var originalText = submitButton ? submitButton.textContent : '';
 
+      var formData = new FormData(form);
+      var payload = {};
+      formData.forEach(function (value, key) {
+        payload[key] = value;
+      });
+      payload['form-name'] = form.getAttribute('name') || payload['form-name'] || 'coverage-review';
+
+      // If the honeypot is filled, skip submission silently
+      if (payload['bot-field']) {
+        showToast('Thanks! Your request was received.', false);
+        form.reset();
+        return;
+      }
+
       if (submitButton) {
         submitButton.disabled = true;
         submitButton.textContent = 'Sending...';
       }
 
-      fetch(form.action, {
-        method: form.method,
-        body: new FormData(form),
+      fetch('/', {
+        method: 'POST',
         headers: {
-          'Accept': 'application/json'
-        }
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: encode(payload)
       }).then(function (response) {
         if (submitButton) {
           submitButton.disabled = false;
