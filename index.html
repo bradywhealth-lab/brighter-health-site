@@ -26,6 +26,10 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: var(--bg);
@@ -473,6 +477,11 @@
       min-height: 90px;
     }
 
+    .hidden-field {
+      display: none;
+      visibility: hidden;
+    }
+
     .helper {
       font-size: 0.78rem;
       color: var(--muted);
@@ -511,6 +520,87 @@
     .footer-social a {
       text-decoration: underline;
       text-decoration-style: dotted;
+    }
+
+    .contact-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.35rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.05);
+    }
+
+    .contact-card h3 {
+      margin-bottom: 0.35rem;
+      font-size: 1.05rem;
+    }
+
+    .contact-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.6rem 0 0;
+      display: grid;
+      gap: 0.45rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .contact-card ul li {
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-start;
+    }
+
+    .contact-card ul li span {
+      margin-top: 0.05rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    .cta-band {
+      background: linear-gradient(135deg, #0f9d92, #0b746b);
+      color: #ffffff;
+      padding: 1.3rem 1.5rem;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 18px 40px rgba(11, 116, 107, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .cta-band h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .cta-band p {
+      margin: 0;
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .mini-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .small-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.45rem;
+    }
+
+    .footer-note {
+      color: rgba(226, 232, 240, 0.7);
+      font-size: 0.78rem;
     }
 
     /* Toast popup */
@@ -907,4 +997,203 @@
           <div class="faq-q">Will you still help me after I enroll?</div>
           <div class="faq-a">
             Absolutely. I come with every policy I help you sign up for. That means you can call or
-            message me for questions, life changes, or issues instead
+            message me for questions, life changes, or issues instead of waiting on a call center.
+            I stay your first contact for as long as you keep the policy.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">How quickly can coverage start?</div>
+          <div class="faq-a">
+            Timing varies by carrier, but many options can begin as soon as the next month.
+            During our call I’ll outline start-date possibilities so you can plan around existing coverage.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Which states do you serve?</div>
+          <div class="faq-a">
+            I work with clients in most states. If you want to confirm availability where you live,
+            add your state in the form below or text me and I’ll let you know right away.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA STRIP -->
+    <section class="section" aria-label="Quick call to action">
+      <div class="cta-band">
+        <div>
+          <h3>Ready to see your options?</h3>
+          <p>Share a few details and get a personalized comparison — no fees, no call-center handoffs.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="#contact" class="btn btn-primary">Book a quick call</a>
+          <a href="landing.html" class="btn btn-outline" style="color: #ffffff; border-color: rgba(255,255,255,0.5);">Explore alternatives</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="contact-grid">
+        <form
+          id="contact-form"
+          name="contact"
+          method="POST"
+          action="/thank-you.html"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          <p class="hidden-field">
+            <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+          </p>
+
+          <div class="field-group">
+            <label for="full-name">Full Name *</label>
+            <input id="full-name" name="full-name" type="text" autocomplete="name" required />
+          </div>
+
+          <div class="field-group">
+            <label for="email">Email *</label>
+            <input id="email" name="email" type="email" autocomplete="email" required />
+          </div>
+
+          <div class="field-group">
+            <label for="phone">Phone (best for quick follow-up) *</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" required />
+          </div>
+
+          <div class="field-group">
+            <label for="state">State of residence *</label>
+            <input id="state" name="state" type="text" required />
+          </div>
+
+          <div class="field-group">
+            <label for="coverage-focus">Who is this coverage for?</label>
+            <select id="coverage-focus" name="coverage-focus">
+              <option value="Individuals and families">Individuals / Families</option>
+              <option value="Small business or team">Small business or team</option>
+              <option value="Self employed / 1099">Self-employed / 1099</option>
+              <option value="Medicare alternative">Medicare alternative</option>
+              <option value="Other">Other / not sure</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label for="timeline">When do you want coverage to start?</label>
+            <select id="timeline" name="timeline">
+              <option value="ASAP">ASAP</option>
+              <option value="Next 30-60 days">Next 30–60 days</option>
+              <option value="Comparing options">Just comparing options</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label for="notes">Anything specific you'd like me to consider?</label>
+            <textarea id="notes" name="notes" placeholder="Current plan, budget, providers you prefer, etc."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Send my request</button>
+          <p class="helper">No fees for my help. I’ll reply within one business day.</p>
+          <p class="disclaimer">By submitting, you agree I may contact you via phone, text, or email regarding health coverage options. Your information will not be sold.</p>
+        </form>
+
+        <div class="contact-card" aria-label="Direct contact details">
+          <h3>Talk with Brady</h3>
+          <p style="color: var(--muted); margin-bottom: 0.6rem;">
+            Prefer to connect right now? Call or text and mention you found me through the site.
+          </p>
+          <ul>
+            <li><span>Call / Text</span>
+              <div>
+                <a href="tel:+12393108926">(239) 310-8926</a><br />
+                <a href="tel:+19703065173">(970) 306-5173</a>
+              </div>
+            </li>
+            <li><span>Email</span>
+              <div>
+                <a href="mailto:bradyw.health@gmail.com">bradyw.health@gmail.com</a><br />
+                <a href="mailto:brighterhealthsolutions@gmail.com">brighterhealthsolutions@gmail.com</a>
+              </div>
+            </li>
+            <li><span>Hours</span>
+              <div>Mon–Sat · 8:00a – 7:00p (Mountain Time)</div>
+            </li>
+            <li><span>States</span>
+              <div>Serving clients in most states; text your ZIP to confirm availability.</div>
+            </li>
+          </ul>
+          <div class="small-note">You’ll work directly with me, not a call center.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="contact-toast" role="status" aria-live="polite"></div>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <strong>Brighter Health Solutions LLC</strong> · Independent Health Insurance Advisor
+        <div class="footer-note">Helping healthy individuals, families, and small businesses compare smarter coverage options.</div>
+      </div>
+      <div class="footer-social">
+        <a href="#top">Back to top</a>
+        <a href="#contact">Book a call</a>
+        <a href="landing.html">Marketplace alternatives</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  function showToast(message, isError) {
+    var toast = document.getElementById('contact-toast');
+    if (!toast) return;
+    toast.textContent = message;
+    toast.classList.toggle('error', !!isError);
+    toast.classList.add('show');
+    setTimeout(function () {
+      toast.classList.remove('show');
+    }, 4000);
+  }
+
+  var contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var submitButton = contactForm.querySelector('button[type="submit"]');
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
+      }
+
+      var formData = new FormData(contactForm);
+      formData.set('form-name', 'contact');
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      })
+        .then(function (response) {
+          if (!response.ok) throw new Error('Network response was not ok');
+          contactForm.reset();
+          showToast('Thanks! Expect a reply within one business day.');
+        })
+        .catch(function () {
+          showToast('Something went wrong. Please call or text and I will respond quickly.', true);
+        })
+        .finally(function () {
+          if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.textContent = 'Send my request';
+          }
+        });
+    });
+  }
+</script>
+</body>
+</html>
