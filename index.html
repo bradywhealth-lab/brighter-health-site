@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Brighter Health Solutions LLC | Independent Health Insurance Advisor</title>
-  <meta name="description" content="Brighter Health Solutions LLC helps healthy individuals, families, small business owners, and the self-employed find smart alternatives to the public marketplace. Work directly with independent advisor Brady Wilson." />
+  <meta name="description" content="Independent health advisor Brady Wilson helps healthy individuals, families, and small business owners compare marketplace plans with private alternatives and receive ongoing support." />
+  <meta name="theme-color" content="#0f9d92" />
   <style>
     :root {
       --primary: #0f9d92;
@@ -20,34 +21,20 @@
       --shadow-soft: 0 18px 45px rgba(15, 157, 146, 0.15);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
+      scroll-behavior: smooth;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+    .page { min-height: 100vh; display: flex; flex-direction: column; }
 
     header {
       background: var(--white);
@@ -67,19 +54,9 @@
       gap: 1.5rem;
     }
 
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
+    .nav-left { display: flex; align-items: center; gap: 0.75rem; }
 
-    .nav-home-link {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-      color: inherit;
-    }
+    .nav-home-link { display: flex; align-items: center; gap: 0.75rem; color: inherit; }
 
     .logo-wrap {
       width: 44px;
@@ -92,44 +69,15 @@
       overflow: hidden;
     }
 
-    .logo-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
+    .logo-wrap img { width: 100%; height: 100%; object-fit: contain; }
 
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-    }
+    .brand-text { display: flex; flex-direction: column; }
+    .brand-text span:first-child { font-weight: 700; font-size: 0.95rem; letter-spacing: 0.03em; text-transform: uppercase; }
+    .brand-text span:last-child { font-size: 0.8rem; color: var(--muted); }
 
-    .brand-text span:first-child {
-      font-weight: 700;
-      font-size: 0.95rem;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-    }
-
-    .brand-text span:last-child {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.2rem;
-      align-items: center;
-      font-size: 0.9rem;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      font-weight: 500;
-    }
-
-    .nav-links a:hover {
-      color: var(--primary-dark);
-    }
+    .nav-links { display: flex; gap: 1.2rem; align-items: center; font-size: 0.9rem; }
+    .nav-links a { color: var(--muted); font-weight: 500; }
+    .nav-links a:hover { color: var(--primary-dark); }
 
     .nav-cta {
       padding: 0.45rem 0.9rem;
@@ -140,20 +88,11 @@
       font-weight: 600;
       box-shadow: 0 10px 25px rgba(15, 157, 146, 0.25);
     }
+    .nav-cta:hover { background: var(--primary-dark); }
 
-    .nav-cta:hover {
-      background: var(--primary-dark);
-    }
+    main { flex: 1; }
 
-    main {
-      flex: 1;
-    }
-
-    .section {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 2.5rem 1.25rem;
-    }
+    .section { max-width: var(--max-width); margin: 0 auto; padding: 2.5rem 1.25rem; }
 
     .hero {
       display: grid;
@@ -179,100 +118,30 @@
       margin-bottom: 0.75rem;
     }
 
-    .hero-badge-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: var(--accent);
-    }
+    .hero-badge-dot { width: 7px; height: 7px; border-radius: 999px; background: var(--accent); }
 
-    .hero h1 {
-      font-size: clamp(2rem, 3vw + 1rem, 2.9rem);
-      line-height: 1.1;
-      margin-bottom: 0.75rem;
-    }
+    .hero h1 { font-size: clamp(2rem, 3vw + 1rem, 2.9rem); line-height: 1.1; margin-bottom: 0.75rem; }
+    .hero h1 span { color: var(--primary); }
 
-    .hero h1 span {
-      color: var(--primary);
-    }
+    .hero-subtitle { font-size: 1.05rem; color: var(--muted); margin-bottom: 1.25rem; max-width: 32rem; }
 
-    .hero-subtitle {
-      font-size: 1.05rem;
-      color: var(--muted);
-      margin-bottom: 1.25rem;
-      max-width: 32rem;
-    }
+    .hero-bullets { display: grid; gap: 0.4rem; font-size: 0.92rem; margin-bottom: 1.5rem; }
 
-    .hero-bullets {
-      display: grid;
-      gap: 0.4rem;
-      font-size: 0.92rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-bullet {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-    }
-
+    .hero-bullet { display: inline-flex; align-items: center; gap: 0.45rem; }
     .hero-bullet-icon {
-      width: 18px;
-      height: 18px;
-      border-radius: 999px;
-      border: 2px solid var(--primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.7rem;
+      width: 18px; height: 18px; border-radius: 999px; border: 2px solid var(--primary);
+      display: flex; align-items: center; justify-content: center; font-size: 0.7rem;
     }
 
-    .hero-cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      align-items: center;
-      margin-bottom: 0.75rem;
-    }
+    .hero-cta-row { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin-bottom: 0.75rem; }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.4rem;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 0.95rem;
-      padding: 0.7rem 1.35rem;
-    }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; border-radius: 999px; border: none; cursor: pointer; font-weight: 600; font-size: 0.95rem; padding: 0.7rem 1.35rem; }
+    .btn-primary { background: var(--primary); color: var(--white); box-shadow: 0 18px 40px rgba(15, 157, 146, 0.35); }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-outline { background: transparent; border: 1px solid rgba(148, 163, 184, 0.6); color: var(--muted); }
+    .btn-outline:hover { border-color: var(--primary-dark); color: var(--primary-dark); }
 
-    .btn-primary {
-      background: var(--primary);
-      color: var(--white);
-      box-shadow: 0 18px 40px rgba(15, 157, 146, 0.35);
-    }
-
-    .btn-primary:hover {
-      background: var(--primary-dark);
-    }
-
-    .btn-outline {
-      background: transparent;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      color: var(--muted);
-    }
-
-    .btn-outline:hover {
-      border-color: var(--primary-dark);
-      color: var(--primary-dark);
-    }
-
-    .hero-trust-text {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
+    .hero-trust-text { font-size: 0.8rem; color: var(--muted); }
 
     .hero-card {
       background: linear-gradient(135deg, #ffffff, #f0fbf9);
@@ -284,176 +153,44 @@
       border: 1px solid rgba(148, 163, 184, 0.25);
     }
 
-    .hero-card-title {
-      font-size: 0.95rem;
-      font-weight: 700;
-      margin-bottom: 0.25rem;
-    }
+    .hero-card-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .hero-card-sub { font-size: 0.82rem; color: var(--muted); }
 
-    .hero-card-sub {
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.1rem; }
+    .pill { padding: 0.2rem 0.7rem; border-radius: 999px; border: 1px solid rgba(15, 157, 146, 0.15); font-size: 0.78rem; background: rgba(15, 157, 146, 0.04); }
 
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.45rem;
-      margin-top: 0.1rem;
-    }
+    .info-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.9rem; font-size: 0.83rem; }
+    .info-item-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.15rem; }
+    .info-item-value a { font-weight: 600; }
 
-    .pill {
-      padding: 0.2rem 0.7rem;
-      border-radius: 999px;
-      border: 1px solid rgba(15, 157, 146, 0.15);
-      font-size: 0.78rem;
-      background: rgba(15, 157, 146, 0.04);
-    }
+    .social-row { display: flex; flex-wrap: wrap; gap: 0.45rem; font-size: 0.8rem; }
+    .social-chip { padding: 0.25rem 0.6rem; border-radius: 999px; background: rgba(15, 23, 42, 0.04); }
 
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.9rem;
-      font-size: 0.83rem;
-    }
+    .section-title { font-size: 1.6rem; margin-bottom: 0.35rem; }
+    .section-subtitle { font-size: 0.95rem; color: var(--muted); margin-bottom: 1.75rem; max-width: 36rem; }
 
-    .info-item-label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-      margin-bottom: 0.15rem;
-    }
+    .two-col { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 2rem; align-items: flex-start; }
 
-    .info-item-value a {
-      font-weight: 600;
-    }
+    .card { background: var(--white); border-radius: var(--radius-md); padding: 1.3rem 1.4rem; border: 1px solid rgba(148, 163, 184, 0.35); box-shadow: 0 10px 25px rgba(15, 23, 42, 0.03); }
+    .card h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+    .card p { font-size: 0.9rem; color: var(--muted); }
 
-    .social-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.45rem;
-      font-size: 0.8rem;
-    }
+    .list { display: grid; gap: 0.55rem; font-size: 0.9rem; }
+    .list-item { display: flex; gap: 0.6rem; }
+    .list-bullet { margin-top: 0.25rem; font-size: 0.9rem; }
 
-    .social-chip {
-      padding: 0.25rem 0.6rem;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.04);
-    }
+    .badge { display: inline-flex; align-items: center; justify-content: center; padding: 0.15rem 0.55rem; border-radius: 999px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.07em; background: rgba(15, 157, 146, 0.08); color: var(--primary-dark); margin-bottom: 0.6rem; }
 
-    .section-title {
-      font-size: 1.6rem;
-      margin-bottom: 0.35rem;
-    }
+    .faq-grid { display: grid; gap: 0.75rem; }
+    .faq-item { border-radius: 10px; background: #ffffff; padding: 0.85rem 0.95rem 0.8rem; border: 1px solid rgba(148, 163, 184, 0.3); }
+    .faq-q { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .faq-a { font-size: 0.86rem; color: var(--muted); }
 
-    .section-subtitle {
-      font-size: 0.95rem;
-      color: var(--muted);
-      margin-bottom: 1.75rem;
-      max-width: 36rem;
-    }
+    .contact-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 2rem; align-items: flex-start; }
 
-    .two-col {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 2rem;
-      align-items: flex-start;
-    }
-
-    .card {
-      background: var(--white);
-      border-radius: var(--radius-md);
-      padding: 1.3rem 1.4rem;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.03);
-    }
-
-    .card h3 {
-      font-size: 1.05rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .card p {
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    .list {
-      display: grid;
-      gap: 0.55rem;
-      font-size: 0.9rem;
-    }
-
-    .list-item {
-      display: flex;
-      gap: 0.6rem;
-    }
-
-    .list-bullet {
-      margin-top: 0.25rem;
-      font-size: 0.9rem;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.15rem 0.55rem;
-      border-radius: 999px;
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      background: rgba(15, 157, 146, 0.08);
-      color: var(--primary-dark);
-      margin-bottom: 0.6rem;
-    }
-
-    .faq-grid {
-      display: grid;
-      gap: 0.75rem;
-    }
-
-    .faq-item {
-      border-radius: 10px;
-      background: #ffffff;
-      padding: 0.85rem 0.95rem 0.8rem;
-      border: 1px solid rgba(148, 163, 184, 0.3);
-    }
-
-    .faq-q {
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 0.3rem;
-    }
-
-    .faq-a {
-      font-size: 0.86rem;
-      color: var(--muted);
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 2rem;
-      align-items: flex-start;
-    }
-
-    form {
-      display: grid;
-      gap: 0.9rem;
-    }
-
-    .field-group {
-      display: grid;
-      gap: 0.35rem;
-    }
-
-    label {
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-
+    form { display: grid; gap: 0.9rem; }
+    .field-group { display: grid; gap: 0.35rem; }
+    label { font-size: 0.85rem; font-weight: 600; }
     input, textarea, select {
       padding: 0.6rem 0.7rem;
       border-radius: 9px;
@@ -462,118 +199,37 @@
       font-family: inherit;
       background: #ffffff;
     }
+    input:focus, textarea:focus, select:focus { outline: 2px solid rgba(15, 157, 146, 0.45); border-color: transparent; }
+    textarea { resize: vertical; min-height: 90px; }
+    .helper { font-size: 0.78rem; color: var(--muted); }
+    .disclaimer { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; }
 
-    input:focus, textarea:focus, select:focus {
-      outline: 2px solid rgba(15, 157, 146, 0.45);
-      border-color: transparent;
-    }
+    footer { margin-top: 2rem; background: #0b1120; color: rgba(226, 232, 240, 0.8); padding: 1.6rem 1.25rem 1.8rem; }
+    .footer-inner { max-width: var(--max-width); margin: 0 auto; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; justify-content: space-between; font-size: 0.8rem; }
+    .footer-social { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .footer-social a { text-decoration: underline; text-decoration-style: dotted; }
 
-    textarea {
-      resize: vertical;
-      min-height: 90px;
-    }
-
-    .helper {
-      font-size: 0.78rem;
-      color: var(--muted);
-    }
-
-    .disclaimer {
-      font-size: 0.75rem;
-      color: var(--muted);
-      margin-top: 0.5rem;
-    }
-
-    footer {
-      margin-top: 2rem;
-      background: #0b1120;
-      color: rgba(226, 232, 240, 0.8);
-      padding: 1.6rem 1.25rem 1.8rem;
-    }
-
-    .footer-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 0.8rem;
-    }
-
-    .footer-social {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-    }
-
-    .footer-social a {
-      text-decoration: underline;
-      text-decoration-style: dotted;
-    }
-
-    /* Toast popup */
     .toast {
-      position: fixed;
-      left: 50%;
-      bottom: 1.5rem;
-      transform: translateX(-50%);
-      min-width: 260px;
-      max-width: 90vw;
-      padding: 0.75rem 1.1rem;
-      border-radius: 999px;
-      background: #0f9d92;
-      color: #ffffff;
-      font-size: 0.9rem;
-      box-shadow: 0 18px 45px rgba(15, 157, 146, 0.45);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.25s ease, transform 0.25s ease;
-      z-index: 9999;
-      text-align: center;
+      position: fixed; left: 50%; bottom: 1.5rem; transform: translateX(-50%);
+      min-width: 260px; max-width: 90vw; padding: 0.75rem 1.1rem;
+      border-radius: 999px; background: #0f9d92; color: #ffffff;
+      font-size: 0.9rem; box-shadow: 0 18px 45px rgba(15, 157, 146, 0.45);
+      opacity: 0; pointer-events: none; transition: opacity 0.25s ease, transform 0.25s ease;
+      z-index: 9999; text-align: center;
     }
-
-    .toast.error {
-      background: #b91c1c;
-      box-shadow: 0 18px 45px rgba(185, 28, 28, 0.5);
-    }
-
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(-8px);
-      pointer-events: auto;
-    }
+    .toast.error { background: #b91c1c; box-shadow: 0 18px 45px rgba(185, 28, 28, 0.5); }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(-8px); pointer-events: auto; }
 
     @media (max-width: 900px) {
-      .hero,
-      .two-col,
-      .contact-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .section {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-      }
-
-      .hero {
-        padding-top: 2rem;
-      }
+      .hero, .two-col, .contact-grid { grid-template-columns: minmax(0, 1fr); }
+      .nav-links { display: none; }
+      .section { padding-top: 2rem; padding-bottom: 2rem; }
+      .hero { padding-top: 2rem; }
     }
 
     @media (max-width: 600px) {
-      .hero-card {
-        padding: 1.4rem 1.1rem;
-      }
-
-      .hero h1 {
-        font-size: 1.9rem;
-      }
+      .hero-card { padding: 1.4rem 1.1rem; }
+      .hero h1 { font-size: 1.9rem; }
     }
   </style>
 </head>
@@ -582,7 +238,7 @@
   <header>
     <nav class="nav">
       <div class="nav-left">
-        <a href="index.html" class="nav-home-link">
+        <a href="#top" class="nav-home-link">
           <div class="logo-wrap">
             <img src="assets/logo.png" alt="Brighter Health Solutions logo" />
           </div>
@@ -602,48 +258,31 @@
     </nav>
   </header>
 
-  <main>
+  <main id="top">
     <!-- HERO -->
-    <section class="section hero" id="top">
+    <section class="section hero" aria-labelledby="hero-title">
       <div>
         <div class="hero-badge">
           <span class="hero-badge-dot"></span>
           <span>Personalized coverage • Zero call-center headaches</span>
         </div>
-        <h1>
+        <h1 id="hero-title">
           Health coverage that <span>comes with Brady</span> — not a call center.
         </h1>
         <p class="hero-subtitle">
-          I help healthy individuals, families, small business owners, and the self-employed
-          find smart, affordable alternatives to the public marketplace — and I stay with you
-          for the life of your policy.
+          Healthy individuals, families, small business owners, and the self-employed work directly with
+          Brady Wilson to compare marketplace options with smart private alternatives.
         </p>
         <div class="hero-bullets">
-          <div class="hero-bullet">
-            <div class="hero-bullet-icon">✓</div>
-            <span>One-stop shop for all your health coverage needs.</span>
-          </div>
-          <div class="hero-bullet">
-            <div class="hero-bullet-icon">✓</div>
-            <span>No more long, frustrating customer service calls.</span>
-          </div>
-          <div class="hero-bullet">
-            <div class="hero-bullet-icon">✓</div>
-            <span>Tailored plans for healthy individuals, growing families, and lean teams.</span>
-          </div>
+          <div class="hero-bullet"><div class="hero-bullet-icon">✓</div><span>One-stop shop for your health coverage decisions.</span></div>
+          <div class="hero-bullet"><div class="hero-bullet-icon">✓</div><span>No more long, frustrating customer service calls.</span></div>
+          <div class="hero-bullet"><div class="hero-bullet-icon">✓</div><span>Tailored plans for healthy individuals, growing families, and lean teams.</span></div>
         </div>
-
         <div class="hero-cta-row">
-          <a href="#contact" class="btn btn-primary">
-            Schedule a Free Coverage Review
-          </a>
-          <a href="landing.html" class="btn btn-outline">
-            Explore Marketplace Alternatives
-          </a>
+          <a href="#contact" class="btn btn-primary">Schedule a Free Coverage Review</a>
+          <a href="landing.html" class="btn btn-outline">Explore Marketplace Alternatives</a>
         </div>
-        <p class="hero-trust-text">
-          No fees for my service — I’m your long-term health coverage partner, not a one-time signup.
-        </p>
+        <p class="hero-trust-text">No fees for this service — a dedicated advisor stays with you for the life of your policy.</p>
       </div>
 
       <aside class="hero-card" aria-label="Quick contact and social card">
@@ -652,7 +291,6 @@
           <div><strong>Brady Wilson</strong></div>
           <div class="hero-card-sub">Independent Health Insurance Advisor · Brighter Health Solutions LLC</div>
         </div>
-
         <div>
           <div class="info-grid">
             <div>
@@ -671,19 +309,13 @@
             </div>
           </div>
         </div>
-
         <div>
           <div class="info-item-label">Social</div>
           <div class="social-row">
-            <span class="social-chip">
-              Instagram: <a href="https://www.instagram.com/healthwithbrady" target="_blank" rel="noopener">@healthwithbrady</a>
-            </span>
-            <span class="social-chip">
-              Facebook: <a href="https://www.facebook.com/brighterhealthsolutions" target="_blank" rel="noopener">Brighter Health Solutions</a>
-            </span>
+            <span class="social-chip">Instagram: <a href="https://www.instagram.com/healthwithbrady" target="_blank" rel="noopener">@healthwithbrady</a></span>
+            <span class="social-chip">Facebook: <a href="https://www.facebook.com/brighterhealthsolutions" target="_blank" rel="noopener">Brighter Health Solutions</a></span>
           </div>
         </div>
-
         <div>
           <div class="info-item-label">Specialties</div>
           <div class="pill-row">
@@ -702,48 +334,17 @@
         <div>
           <div class="badge">About Brighter Health Solutions LLC</div>
           <h2 class="section-title">Health insurance that puts people ahead of paperwork.</h2>
-          <p class="section-subtitle">
-            Brighter Health Solutions is your one-stop shop for health coverage. I don’t just help
-            you choose a plan and disappear — I stay with you for the life of every policy.
-          </p>
+          <p class="section-subtitle">Brighter Health Solutions is your one-stop shop for coverage. Brady stays with you for the life of every policy.</p>
           <div class="list">
-            <div class="list-item">
-              <span class="list-bullet">•</span>
-              <div>
-                <strong>Independent, not captive.</strong><br />
-                I’m not tied to one carrier, which means I can help you explore a wider range of options
-                and find a solution that truly fits your needs and budget.
-              </div>
-            </div>
-            <div class="list-item">
-              <span class="list-bullet">•</span>
-              <div>
-                <strong>Built for healthy households & lean teams.</strong><br />
-                Many of my clients are healthy families, small business owners, and self-employed
-                professionals who want more control and value than the public marketplace offers.
-              </div>
-            </div>
-            <div class="list-item">
-              <span class="list-bullet">•</span>
-              <div>
-                <strong>Service that doesn’t stop at enrollment.</strong><br />
-                Have a billing issue? Network question? Life change? You call me, not a generic
-                customer service line. I’m your first call for anything related to your coverage.
-              </div>
-            </div>
+            <div class="list-item"><span class="list-bullet">•</span><div><strong>Independent, not captive.</strong><br />Access to multiple carriers to match your needs and budget.</div></div>
+            <div class="list-item"><span class="list-bullet">•</span><div><strong>Built for healthy households & lean teams.</strong><br />Ideal for healthy families, small business owners, and self-employed pros who want value and control.</div></div>
+            <div class="list-item"><span class="list-bullet">•</span><div><strong>Service that doesn’t stop at enrollment.</strong><br />Billing issue? Network question? Life change? You call Brady, not a generic queue.</div></div>
           </div>
         </div>
         <div class="card">
           <h3>Meet Brady</h3>
-          <p>
-            I started Brighter Health Solutions because I saw how overwhelming – and frankly
-            frustrating – health insurance can be for everyday people and small business owners.
-          </p>
-          <p style="margin-top: 0.6rem;">
-            My goal is simple: make your coverage clear, affordable, and easy to manage. When we work together,
-            you’re not just getting a policy — you’re getting a dedicated advisor who knows your situation and
-            has your back year after year.
-          </p>
+          <p>I started Brighter Health Solutions because health insurance shouldn’t be confusing or overpriced. Clear guidance, proactive support, and plans that match how you actually live are the standard here.</p>
+          <p style="margin-top: 0.6rem;">You’re not just getting a policy — you’re getting a dedicated advisor who knows your situation and has your back year after year.</p>
         </div>
       </div>
     </section>
@@ -751,52 +352,24 @@
     <!-- WHO WE SERVE -->
     <section class="section" id="who-we-serve">
       <h2 class="section-title">Who I Serve</h2>
-      <p class="section-subtitle">
-        Brighter Health Solutions is a great fit if you’re proactive about your health and want
-        coverage that works smarter for your lifestyle and budget.
-      </p>
+      <p class="section-subtitle">A great fit for people who are proactive about their health and want coverage that works smarter for their lifestyle and budget.</p>
       <div class="two-col">
         <div class="card">
           <h3>Healthy Individuals & Families</h3>
-          <p>
-            If you rarely visit the doctor but still want strong protection for the “what-ifs,” I help you
-            explore options that prioritize value and flexibility.
-          </p>
+          <p>If you rarely visit the doctor but still want strong protection for the “what-ifs,” Brady helps you explore options that prioritize value and flexibility.</p>
           <div class="list" style="margin-top: 0.9rem;">
-            <div class="list-item">
-              <span class="list-bullet">•</span>
-              <span>Alternatives to expensive marketplace plans.</span>
-            </div>
-            <div class="list-item">
-              <span class="list-bullet">•</span>
-              <span>Coverage tailored to your health habits and risk tolerance.</span>
-            </div>
-            <div class="list-item">
-              <span class="list-bullet">•</span>
-              <span>Options for growing families and changing needs.</span>
-            </div>
+            <div class="list-item"><span class="list-bullet">•</span><span>Alternatives to expensive marketplace plans.</span></div>
+            <div class="list-item"><span class="list-bullet">•</span><span>Coverage tailored to your health habits and risk tolerance.</span></div>
+            <div class="list-item"><span class="list-bullet">•</span><span>Options for growing families and changing needs.</span></div>
           </div>
         </div>
-
         <div class="card">
           <h3>Small Business Owners & Self-Employed</h3>
-          <p>
-            Running a business or working for yourself shouldn’t mean sacrificing quality coverage.
-            I help you design solutions that work for your income, cash flow, and long-term goals.
-          </p>
+          <p>Running a business or working for yourself shouldn’t mean sacrificing quality coverage. Build solutions that fit your income, cash flow, and long-term goals.</p>
           <div class="list" style="margin-top: 0.9rem;">
-            <div class="list-item">
-              <span class="list-bullet">•</span>
-              <span>Coverage for solo entrepreneurs and 1099 earners.</span>
-            </div>
-            <div class="list-item">
-              <span class="list-bullet">•</span>
-              <span>Options for small teams that don’t fit the big-group model.</span>
-            </div>
-            <div class="list-item">
-              <span class="list-bullet">•</span>
-              <span>Strategic plan choices to help manage overall costs.</span>
-            </div>
+            <div class="list-item"><span class="list-bullet">•</span><span>Coverage for solo entrepreneurs and 1099 earners.</span></div>
+            <div class="list-item"><span class="list-bullet">•</span><span>Options for small teams that don’t fit the big-group model.</span></div>
+            <div class="list-item"><span class="list-bullet">•</span><span>Strategic plan choices to help manage overall costs.</span></div>
           </div>
         </div>
       </div>
@@ -807,62 +380,43 @@
       <div class="two-col">
         <div>
           <h2 class="section-title">How It Works</h2>
-          <p class="section-subtitle">
-            Simple, personal, and guided at every step — from your first quote to your first claim.
-          </p>
+          <p class="section-subtitle">Simple, personal, and guided at every step — from your first quote to your first claim.</p>
           <div class="list">
-            <div class="list-item">
-              <span class="list-bullet">1.</span>
-              <div>
-                <strong>Free discovery call.</strong><br />
-                We’ll talk through your situation, current coverage (if any), and what matters most to you:
-                providers, premiums, deductibles, flexibility, and more.
-              </div>
-            </div>
-            <div class="list-item">
-              <span class="list-bullet">2.</span>
-              <div>
-                <strong>Custom plan comparison.</strong><br />
-                I’ll present options, including alternatives to the public marketplace, and walk you through
-                the pros and cons in plain language.
-              </div>
-            </div>
-            <div class="list-item">
-              <span class="list-bullet">3.</span>
-              <div>
-                <strong>Guided enrollment.</strong><br />
-                When you’re ready, I help you complete the application and ensure everything is set up correctly.
-              </div>
-            </div>
-            <div class="list-item">
-              <span class="list-bullet">4.</span>
-              <div>
-                <strong>Support for the life of your policy.</strong><br />
-                Need to update your info, add a family member, or address a claim question? You don’t start
-                over with a stranger — you call me.
-              </div>
-            </div>
+            <div class="list-item"><span class="list-bullet">1.</span><div><strong>Free discovery call.</strong><br />Talk through your situation, current coverage, and what matters most (providers, premiums, deductibles, flexibility, more).</div></div>
+            <div class="list-item"><span class="list-bullet">2.</span><div><strong>Custom plan comparison.</strong><br />Compare marketplace plans against private alternatives in plain language.</div></div>
+            <div class="list-item"><span class="list-bullet">3.</span><div><strong>Guided enrollment.</strong><br />Complete the application correctly and confidently.</div></div>
+            <div class="list-item"><span class="list-bullet">4.</span><div><strong>Support for the life of your policy.</strong><br />Update info, add a family member, or solve a claim issue with a quick call or text.</div></div>
           </div>
         </div>
         <div class="card">
           <h3>What makes Brighter Health different?</h3>
           <div class="list" style="margin-top: 0.3rem;">
-            <div class="list-item">
-              <span class="list-bullet">•</span>
-              <span>Independent advisor with access to multiple solutions.</span>
-            </div>
-            <div class="list-item">
-              <span class="list-bullet">•</span>
-              <span>Focused on healthy individuals, families, and business owners.</span>
-            </div>
-            <div class="list-item">
-              <span class="list-bullet">•</span>
-              <span>Ongoing, personal support instead of call-center runaround.</span>
-            </div>
-            <div class="list-item">
-              <span class="list-bullet">•</span>
-              <span>No additional fees for my advisory services.</span>
-            </div>
+            <div class="list-item"><span class="list-bullet">•</span><span>Independent advisor with access to multiple solutions.</span></div>
+            <div class="list-item"><span class="list-bullet">•</span><span>Focused on healthy individuals, families, and business owners.</span></div>
+            <div class="list-item"><span class="list-bullet">•</span><span>Ongoing, personal support instead of call-center runaround.</span></div>
+            <div class="list-item"><span class="list-bullet">•</span><span>No additional fees for advisory services.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALUE PILLARS -->
+    <section class="section" id="pillars">
+      <div class="two-col">
+        <div class="card">
+          <h3>What clients love</h3>
+          <div class="list" style="margin-top: 0.35rem;">
+            <div class="list-item"><span class="list-bullet">•</span><span>Direct access to Brady for claims questions, renewals, and life changes.</span></div>
+            <div class="list-item"><span class="list-bullet">•</span><span>Clear comparisons of marketplace plans vs. private alternatives.</span></div>
+            <div class="list-item"><span class="list-bullet">•</span><span>Options tailored to people who prioritize value, flexibility, and strong “what-if” coverage.</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Coverage snapshots</h3>
+          <div class="list" style="margin-top: 0.35rem;">
+            <div class="list-item"><span class="list-bullet">•</span><span>Healthy couple saving after moving off a high-deductible marketplace plan.</span></div>
+            <div class="list-item"><span class="list-bullet">•</span><span>Self-employed designer with nationwide PPO network and stable monthly cost.</span></div>
+            <div class="list-item"><span class="list-bullet">•</span><span>Small team with blended coverage so each employee gets what fits their needs.</span></div>
           </div>
         </div>
       </div>
@@ -871,40 +425,134 @@
     <!-- FAQ -->
     <section class="section" id="faq">
       <h2 class="section-title">Frequently Asked Questions</h2>
-      <p class="section-subtitle">
-        A quick look at what it’s like to work with Brighter Health Solutions and how I help
-        you navigate health coverage choices.
-      </p>
-
+      <p class="section-subtitle">A quick look at what it’s like to work with Brighter Health Solutions and how Brady helps you navigate coverage choices.</p>
       <div class="faq-grid">
-        <div class="faq-item">
-          <div class="faq-q">Do you replace the public marketplace?</div>
-          <div class="faq-a">
-            Not always — but often, I help clients find alternatives that better match their health,
-            usage, and budget. My job is to show you clearly how different options compare so
-            you can make an informed decision.
+        <div class="faq-item"><div class="faq-q">Do you replace the public marketplace?</div><div class="faq-a">Not always — but often, clients find alternatives that better match their health, usage, and budget. You’ll see the comparison clearly so you can decide confidently.</div></div>
+        <div class="faq-item"><div class="faq-q">What does it cost to work with you?</div><div class="faq-a">There’s no additional fee for advisory services. Compensation happens when Brady helps you enroll, so you get a dedicated advisor without an extra line item.</div></div>
+        <div class="faq-item"><div class="faq-q">Can you help if I already have coverage?</div><div class="faq-a">Yes. Many clients arrive with existing coverage that feels too expensive or confusing. Brady can review what you have, outline alternatives, and help you adjust or switch.</div></div>
+        <div class="faq-item"><div class="faq-q">Will you still help after I enroll?</div><div class="faq-a">Absolutely. Brady comes with every policy. Call or message for questions, life changes, or claims — no call-center maze.</div></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="contact-grid">
+        <div>
+          <div class="badge">Talk With Brady</div>
+          <h2 class="section-title">Get a free coverage review</h2>
+          <p class="section-subtitle">Share a few details and Brady will follow up with options tailored to your household or team. Prefer to skip the form? Call or text either number any time.</p>
+          <div class="card">
+            <h3>Direct contact</h3>
+            <div class="info-grid" style="margin-top: 0.6rem;">
+              <div><div class="info-item-label">Call / Text</div><div class="info-item-value"><a href="tel:+12393108926">(239) 310-8926</a><br /><a href="tel:+19703065173">(970) 306-5173</a></div></div>
+              <div><div class="info-item-label">Email</div><div class="info-item-value"><a href="mailto:bradyw.health@gmail.com">bradyw.health@gmail.com</a><br /><a href="mailto:brighterhealthsolutions@gmail.com">brighterhealthsolutions@gmail.com</a></div></div>
+            </div>
+            <p class="helper" style="margin-top: 0.6rem;">“I come with every policy I help you sign up for. You’ll always have my number.”</p>
           </div>
         </div>
 
-        <div class="faq-item">
-          <div class="faq-q">What does it cost to work with you?</div>
-          <div class="faq-a">
-            There’s no additional fee for my advisory services. I’m compensated when I help you
-            enroll in a plan, which means you get a dedicated advisor without an extra line item
-            in your budget.
-          </div>
+        <div class="card" aria-label="Contact form">
+          <h3>Request your options</h3>
+          <p class="helper">No pressure, no obligation. Takes about a minute.</p>
+          <form name="coverage-consult" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contact-form">
+            <input type="hidden" name="form-name" value="coverage-consult" />
+            <p style="display:none;"><label>Don’t fill this out if you’re human: <input name="bot-field" /></label></p>
+            <div class="field-group">
+              <label for="cf-name">Full Name</label>
+              <input id="cf-name" name="name" type="text" placeholder="Jane Doe" required />
+            </div>
+            <div class="field-group">
+              <label for="cf-email">Email</label>
+              <input id="cf-email" name="email" type="email" placeholder="you@example.com" required />
+            </div>
+            <div class="field-group">
+              <label for="cf-phone">Phone (call or text)</label>
+              <input id="cf-phone" name="phone" type="tel" placeholder="(555) 123-4567" required />
+            </div>
+            <div class="field-group">
+              <label for="cf-profile">Which best describes you?</label>
+              <select id="cf-profile" name="profile" required>
+                <option value="">Select one</option>
+                <option value="individual">Healthy individual</option>
+                <option value="family">Healthy family</option>
+                <option value="self-employed">Self-employed / 1099</option>
+                <option value="small-business-owner">Small business owner</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label for="cf-message">Anything specific you’d like help with?</label>
+              <textarea id="cf-message" name="message" placeholder="Example: comparing my current marketplace plan to other options."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" id="cf-submit">Book my review</button>
+            <p class="disclaimer">By submitting, you agree Brighter Health Solutions may contact you regarding health coverage options. Your information is never sold.</p>
+          </form>
         </div>
+      </div>
+    </section>
 
-        <div class="faq-item">
-          <div class="faq-q">Can you help if I already have coverage?</div>
-          <div class="faq-a">
-            Yes. Many clients come to me with existing coverage that feels too expensive or confusing.
-            I can review what you have, outline alternatives, and help you decide whether to adjust or switch.
-          </div>
+    <!-- CTA STRIP -->
+    <section class="section" style="padding-top: 1.5rem; padding-bottom: 2.25rem;">
+      <div class="card" style="background: linear-gradient(135deg, #0f9d92, #0b746b); color: #f8fafc; text-align: center;">
+        <h2 style="color: #ffffff; margin-bottom: 0.3rem;">Ready for coverage that comes with an advisor?</h2>
+        <p style="color: rgba(248, 250, 252, 0.85); margin-bottom: 0.9rem;">Let’s compare your options and keep you away from the call-center maze.</p>
+        <div class="hero-cta-row" style="justify-content: center;">
+          <a href="#contact" class="btn btn-primary" style="background:#ffffff; color:#0b746b; box-shadow: none;">Request a Coverage Review</a>
+          <a href="tel:+12393108926" class="btn btn-outline" style="color:#ffffff; border-color: rgba(255,255,255,0.6);">Call or Text Brady</a>
         </div>
+      </div>
+    </section>
+  </main>
 
-        <div class="faq-item">
-          <div class="faq-q">Will you still help me after I enroll?</div>
-          <div class="faq-a">
-            Absolutely. I come with every policy I help you sign up for. That means you can call or
-            message me for questions, life changes, or issues instead
+  <footer>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> Brighter Health Solutions LLC.</span>
+      <span class="footer-social">
+        Instagram: <a href="https://www.instagram.com/healthwithbrady" target="_blank" rel="noopener">@healthwithbrady</a>
+        <span aria-hidden="true">•</span>
+        Facebook: <a href="https://www.facebook.com/brighterhealthsolutions" target="_blank" rel="noopener">Brighter Health Solutions</a>
+      </span>
+    </div>
+  </footer>
+</div>
+
+<div class="toast" id="form-toast" role="status" aria-live="polite"></div>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  function showToast(message, isError) {
+    var toast = document.getElementById('form-toast');
+    if (!toast) return;
+    toast.textContent = message;
+    toast.classList.remove('error');
+    if (isError) toast.classList.add('error');
+    toast.classList.add('show');
+    setTimeout(function () { toast.classList.remove('show'); }, 4200);
+  }
+
+  var contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var submitButton = document.getElementById('cf-submit');
+      var originalText = submitButton ? submitButton.textContent : '';
+      if (submitButton) { submitButton.disabled = true; submitButton.textContent = 'Sending...'; }
+      fetch('/', { method: 'POST', body: new FormData(contactForm) })
+        .then(function (response) {
+          if (submitButton) { submitButton.disabled = false; submitButton.textContent = originalText; }
+          if (response.ok) {
+            showToast('Thanks! I’ve received your request and will follow up with options.', false);
+            contactForm.reset();
+          } else {
+            showToast('Something went wrong. Please try again or contact me directly.', true);
+          }
+        })
+        .catch(function () {
+          if (submitButton) { submitButton.disabled = false; submitButton.textContent = originalText; }
+          showToast('Network error. Please try again or reach out by phone/email.', true);
+        });
+    });
+  }
+</script>
+</body>
+</html>
