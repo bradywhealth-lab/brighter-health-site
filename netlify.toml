@@ -1,0 +1,9 @@
+[build]
+# Simple build step to stage static assets into the Gatsby-friendly publish folder.
+command = "npm run build"
+# Gatsby plugin requires the publish directory to be \"public\".
+publish = "public"
+
+[build.environment]
+# Pin Node to an LTS version compatible with sharp/node-gyp on Netlify.
+NODE_VERSION = "20"
