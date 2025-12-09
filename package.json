@@ -1,0 +1,7 @@
+{
+  "name": "healthwithbrady-static-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static marketing site for Health With Brady deployed on Netlify.",
+  "license": "UNLICENSED"
+}
