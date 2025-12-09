@@ -1,0 +1,28 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+  edge_functions = "netlify/edge-functions"
+
+# Redirect friendly, human URLs to the right documents
+[[redirects]]
+  from = "/landing"
+  to = "/landing.html"
+  status = 301
+  force = true
+
+# Security and performance headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(self)"
+    X-XSS-Protection = "1; mode=block"
+    Cache-Control = "public, max-age=600"
+
+# Run the edge function on every request to apply security headers early
+[[edge_functions]]
+  function = "securityHeaders"
+  path = "/*"
