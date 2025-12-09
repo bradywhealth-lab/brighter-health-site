@@ -907,4 +907,130 @@
           <div class="faq-q">Will you still help me after I enroll?</div>
           <div class="faq-a">
             Absolutely. I come with every policy I help you sign up for. That means you can call or
-            message me for questions, life changes, or issues instead
+            message me for questions, life changes, or issues instead of waiting on hold with a call center.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="contact-grid">
+        <div>
+          <div class="badge">Get in Touch</div>
+          <h2 class="section-title">Ready to review your options?</h2>
+          <p class="section-subtitle">
+            Schedule a free consultation or send me a message. I’ll help you compare plans and find the right fit — no pressure, no sales tactics.
+          </p>
+
+          <div class="card" style="margin-bottom: 1.5rem;">
+            <h3>Contact Information</h3>
+             <div class="list" style="margin-top: 0.8rem;">
+                <div class="list-item">
+                  <span class="list-bullet" style="font-size:1.2rem">📞</span>
+                  <div>
+                    <strong>Call or Text</strong><br/>
+                    <a href="tel:+12393108926">(239) 310-8926</a><br/>
+                    <a href="tel:+19703065173">(970) 306-5173</a>
+                  </div>
+                </div>
+                <div class="list-item">
+                   <span class="list-bullet" style="font-size:1.2rem">✉️</span>
+                   <div>
+                     <strong>Email</strong><br/>
+                     <a href="mailto:bradyw.health@gmail.com">bradyw.health@gmail.com</a><br/>
+                     <a href="mailto:brighterhealthsolutions@gmail.com">brighterhealthsolutions@gmail.com</a>
+                   </div>
+                </div>
+             </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <form action="https://formspree.io/f/mgvgleje" method="POST" data-formspree="true">
+            <div class="field-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required placeholder="Your name">
+            </div>
+            <div class="field-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required placeholder="email@example.com">
+            </div>
+            <div class="field-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+            </div>
+             <div class="field-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="How can I help you?"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%">Send Message</button>
+            <p class="disclaimer">By submitting this form, you agree to be contacted about health insurance options.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        © <span id="year"></span> Brighter Health Solutions LLC. <br/>
+        <span style="font-size:0.75rem; color: rgba(255,255,255,0.5);">Independent Health Insurance Advisor</span>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/healthwithbrady" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/brighterhealthsolutions" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<div class="toast" id="form-toast"></div>
+
+<script>
+  // Set current year
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Toast function
+  function showToast(message, isError) {
+    var toast = document.getElementById('form-toast');
+    if (!toast) return;
+    toast.textContent = message;
+    toast.classList.remove('error');
+    if (isError) toast.classList.add('error');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 4000);
+  }
+
+  // Form handling
+  var forms = document.querySelectorAll('form[data-formspree="true"]');
+  forms.forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var btn = form.querySelector('button[type="submit"]');
+      var originalText = btn ? btn.textContent : 'Send';
+      if(btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
+
+      fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if(btn) { btn.disabled = false; btn.textContent = originalText; }
+        if (response.ok) {
+          showToast('Message sent! I will be in touch soon.', false);
+          form.reset();
+        } else {
+          showToast('Something went wrong. Please try again.', true);
+        }
+      }).catch(err => {
+        if(btn) { btn.disabled = false; btn.textContent = originalText; }
+        showToast('Network error. Please try again.', true);
+      });
+    });
+  });
+</script>
+</body>
+</html>

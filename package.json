@@ -1,0 +1,12 @@
+{
+  "name": "health-with-brady",
+  "version": "1.0.0",
+  "description": "Brighter Health Solutions LLC Website",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
