@@ -450,11 +450,16 @@
       </div>
 
       <form
-        action="https://formspree.io/f/mgvgleje"
+        name="marketplace-alternatives"
         method="POST"
-        data-formspree="true"
-        data-success-message="Thanks! I’ve received your request and will follow up with options."
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        id="landing-form"
       >
+        <input type="hidden" name="form-name" value="marketplace-alternatives" />
+        <p style="display:none;">
+          <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+        </p>
         <div class="field-group">
           <label for="name">Full Name</label>
           <input type="text" id="name" name="name" placeholder="Jane Doe" required />
@@ -557,13 +562,13 @@
     }, 4000);
   }
 
-  // Attach Formspree AJAX handler to any form marked with data-formspree
-  var forms = document.querySelectorAll('form[data-formspree="true"]');
-  forms.forEach(function (form) {
-    form.addEventListener('submit', function (e) {
+  // Attach Netlify-enhanced submit handler
+  var landingForm = document.getElementById('landing-form');
+  if (landingForm) {
+    landingForm.addEventListener('submit', function (e) {
       e.preventDefault();
 
-      var submitButton = form.querySelector('button[type="submit"]');
+      var submitButton = document.getElementById('landing-submit');
       var originalText = submitButton ? submitButton.textContent : '';
 
       if (submitButton) {
@@ -571,12 +576,9 @@
         submitButton.textContent = 'Sending...';
       }
 
-      fetch(form.action, {
-        method: form.method,
-        body: new FormData(form),
-        headers: {
-          'Accept': 'application/json'
-        }
+      fetch('/', {
+        method: 'POST',
+        body: new FormData(landingForm)
       }).then(function (response) {
         if (submitButton) {
           submitButton.disabled = false;
@@ -584,9 +586,8 @@
         }
 
         if (response.ok) {
-          var successMessage = form.getAttribute('data-success-message') || 'Thank you! Your message has been sent.';
-          showToast(successMessage, false);
-          form.reset();
+          showToast('Thanks! I’ve received your request and will follow up with options.', false);
+          landingForm.reset();
         } else {
           showToast('Something went wrong. Please try again or contact me directly.', true);
         }
@@ -598,7 +599,7 @@
         showToast('Network error. Please try again or reach out by phone/email.', true);
       });
     });
-  });
+  }
 </script>
 </body>
 </html>
