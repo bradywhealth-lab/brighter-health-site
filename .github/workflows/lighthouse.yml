@@ -26,14 +26,24 @@ jobs:
           npx http-server -p 8080 &
           sleep 2
 
+      - name: Install Chromium for Lighthouse
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y chromium-browser
+          which chromium-browser || which chromium || true
+
       - name: Run Lighthouse on index.html
         run: |
-          npx lighthouse http://127.0.0.1:8080/index.html --output=json --output=html --output-path=./lighthouse-index --quiet || true
+          CHROME_PATH=$(which chromium-browser || which chromium)
+          echo "Using chrome at: $CHROME_PATH"
+          npx lighthouse http://127.0.0.1:8080/index.html --output=json --output=html --output-path=./lighthouse-index --chrome-path="$CHROME_PATH" --chrome-flags="--headless --no-sandbox" --quiet || true
           ls -lah ./lighthouse-index*
 
       - name: Run Lighthouse on landing.html
         run: |
-          npx lighthouse http://127.0.0.1:8080/landing.html --output=json --output=html --output-path=./lighthouse-landing --quiet || true
+          CHROME_PATH=$(which chromium-browser || which chromium)
+          echo "Using chrome at: $CHROME_PATH"
+          npx lighthouse http://127.0.0.1:8080/landing.html --output=json --output=html --output-path=./lighthouse-landing --chrome-path="$CHROME_PATH" --chrome-flags="--headless --no-sandbox" --quiet || true
           ls -lah ./lighthouse-landing*
 
       - name: Upload Lighthouse reports
