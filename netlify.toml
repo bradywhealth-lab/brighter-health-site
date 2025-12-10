@@ -1,0 +1,15 @@
+# Netlify Configuration
+# Static site - no build required
+
+# Publish directory containing the HTML files
+[build]
+  publish = "."
+  command = "echo 'Static site - no build needed'"
+
+# Redirect rules
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = true
+  conditions = {Language = ["en"]}
