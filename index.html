@@ -907,4 +907,112 @@
           <div class="faq-q">Will you still help me after I enroll?</div>
           <div class="faq-a">
             Absolutely. I come with every policy I help you sign up for. That means you can call or
-            message me for questions, life changes, or issues instead
+            message me for questions, life changes, or issues instead of being routed to a generic
+            call center. I’ll help with billing, claims questions, member updates, and anything else
+            related to your coverage for as long as you keep the policy.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="two-col">
+        <div>
+          <h2 class="section-title">Schedule a Free Coverage Review</h2>
+          <p class="section-subtitle">Quick — no pressure. Tell me a little about your situation and I’ll follow up personally.</p>
+          <div class="card">
+            <h3>Prefer to reach out directly?</h3>
+            <p class="helper">Call or text: <a href="tel:+12393108926">(239) 310-8926</a> · <a href="tel:+19703065173">(970) 306-5173</a></p>
+            <p class="helper">Email: <a href="mailto:bradyw.health@gmail.com">bradyw.health@gmail.com</a></p>
+          </div>
+        </div>
+
+        <div class="card">
+          <form action="https://formspree.io/f/mgvgleje" method="POST" data-formspree="true" data-success-message="Thanks! I’ve received your request and will follow up with options.">
+            <div class="field-group">
+              <label for="name">Full name</label>
+              <input id="name" name="name" type="text" placeholder="Jane Doe" required />
+            </div>
+
+            <div class="field-group">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" required />
+            </div>
+
+            <div class="field-group">
+              <label for="phone">Phone (call or text)</label>
+              <input id="phone" name="phone" type="tel" placeholder="(555) 123-4567" required />
+            </div>
+
+            <div class="field-group">
+              <label for="message">How can I help?</label>
+              <textarea id="message" name="message" placeholder="A quick note about what you need"></textarea>
+            </div>
+
+            <input type="hidden" name="source" value="Website - Contact Form" />
+
+            <div style="margin-top:0.6rem;">
+              <button type="submit" class="btn btn-primary">Request a Free Review</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© <span id="year"></span> Brighter Health Solutions LLC.</div>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/healthwithbrady" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/brighterhealthsolutions" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="form-toast"></div>
+
+  <script>
+    // Set current year in footer
+    var yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    // Simple toast function
+    function showToast(message, isError) {
+      var toast = document.getElementById('form-toast');
+      if (!toast) return;
+      toast.textContent = message;
+      toast.classList.remove('error');
+      if (isError) toast.classList.add('error');
+      toast.classList.add('show');
+      setTimeout(function () { toast.classList.remove('show'); }, 4000);
+    }
+
+    // Attach Formspree AJAX handler to any form marked with data-formspree
+    var forms = document.querySelectorAll('form[data-formspree="true"]');
+    forms.forEach(function (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var submitButton = form.querySelector('button[type="submit"]');
+        var originalText = submitButton ? submitButton.textContent : '';
+        if (submitButton) { submitButton.disabled = true; submitButton.textContent = 'Sending...'; }
+
+        fetch(form.action, {
+          method: form.method || 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        }).then(function (response) {
+          if (submitButton) { submitButton.disabled = false; submitButton.textContent = originalText; }
+          if (response.ok) { var successMessage = form.getAttribute('data-success-message') || 'Thanks!'; showToast(successMessage, false); form.reset(); }
+          else { showToast('Something went wrong. Please try again or contact me directly.', true); }
+        }).catch(function () { if (submitButton) { submitButton.disabled = false; submitButton.textContent = originalText; } showToast('Network error. Please try again or reach out by phone/email.', true); });
+      });
+    });
+  </script>
+
+</div>
+</body>
+</html>
