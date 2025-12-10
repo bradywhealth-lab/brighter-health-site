@@ -1,0 +1,35 @@
+name: pa11y Accessibility Checks
+
+on:
+  pull_request:
+    paths:
+      - '**/*.html'
+
+jobs:
+  pa11y:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install http-server and pa11y
+        run: |
+          npm install -g http-server pa11y
+
+      - name: Start static server
+        run: |
+          npx http-server -p 8080 &
+          sleep 2
+
+      - name: Run pa11y on index.html
+        run: |
+          npx pa11y http://127.0.0.1:8080/index.html --reporter ci
+
+      - name: Run pa11y on landing.html
+        run: |
+          npx pa11y http://127.0.0.1:8080/landing.html --reporter ci
