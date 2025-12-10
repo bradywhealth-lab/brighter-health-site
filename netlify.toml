@@ -1,0 +1,7 @@
+[build]
+  publish = "/"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# Keep default settings for deploy previews; this ensures Netlify uses Node 18
