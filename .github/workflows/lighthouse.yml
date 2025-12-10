@@ -1,0 +1,45 @@
+name: Lighthouse audits
+
+on:
+  pull_request:
+    paths:
+      - '**/*.html'
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install http-server and lighthouse
+        run: |
+          npm install -g http-server lighthouse
+
+      - name: Start static server
+        run: |
+          npx http-server -p 8080 &
+          sleep 2
+
+      - name: Run Lighthouse on index.html
+        run: |
+          npx lighthouse http://127.0.0.1:8080/index.html --output=json --output=html --output-path=./lighthouse-index --quiet || true
+          ls -lah ./lighthouse-index*
+
+      - name: Run Lighthouse on landing.html
+        run: |
+          npx lighthouse http://127.0.0.1:8080/landing.html --output=json --output=html --output-path=./lighthouse-landing --quiet || true
+          ls -lah ./lighthouse-landing*
+
+      - name: Upload Lighthouse reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-reports
+          path: |
+            lighthouse-index.*
+            lighthouse-landing.*

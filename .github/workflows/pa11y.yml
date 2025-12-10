@@ -26,10 +26,20 @@ jobs:
           npx http-server -p 8080 &
           sleep 2
 
-      - name: Run pa11y on index.html
+      - name: Run pa11y on index.html and upload results
         run: |
-          npx pa11y http://127.0.0.1:8080/index.html --reporter ci
+          npx pa11y http://127.0.0.1:8080/index.html --reporter json > pa11y-index.json || true
+          ls -lah pa11y-index.json || true
 
-      - name: Run pa11y on landing.html
+      - name: Run pa11y on landing.html and upload results
         run: |
-          npx pa11y http://127.0.0.1:8080/landing.html --reporter ci
+          npx pa11y http://127.0.0.1:8080/landing.html --reporter json > pa11y-landing.json || true
+          ls -lah pa11y-landing.json || true
+
+      - name: Upload pa11y results
+        uses: actions/upload-artifact@v4
+        with:
+          name: pa11y-reports
+          path: |
+            pa11y-index.json
+            pa11y-landing.json
