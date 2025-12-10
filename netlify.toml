@@ -1,0 +1,21 @@
+[build]
+  command = "npm run build"
+  publish = "."
+
+[build.environment]
+  PYTHON_VERSION = "3.11.6"
+
+[[plugins]]
+package = "netlify-plugin-formspree"
+
+[[plugins]]
+package = "@netlify/plugin-lighthouse"
+
+[[plugins]]
+package = "netlify-plugin-submit-sitemap"
+
+[[plugins]]
+package = "netlify-plugin-checklinks"
+
+[[plugins]]
+package = "netlify-plugin-html-validate"
