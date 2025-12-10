@@ -3,5 +3,6 @@
 
 [build.environment]
   NODE_VERSION = "18"
+  PYTHON_VERSION = "3.10"
 
 # Keep default settings for deploy previews; this ensures Netlify uses Node 18
