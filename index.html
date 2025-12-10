@@ -575,9 +575,14 @@
         font-size: 1.9rem;
       }
     }
+
+    /* Skip link for keyboard users */
+    .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip-link:focus{position:static;width:auto;height:auto;margin:0.8rem;z-index:10000;background:var(--white);padding:0.5rem 0.75rem;border-radius:6px}
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
 <div class="page">
   <header>
     <nav class="nav">
@@ -602,7 +607,7 @@
     </nav>
   </header>
 
-  <main>
+  <main id="main" role="main">
     <!-- HERO -->
     <section class="section hero" id="top">
       <div>
