@@ -895,16 +895,206 @@
           </div>
         </div>
 
-        <div class="faq-item">
-          <div class="faq-q">Can you help if I already have coverage?</div>
-          <div class="faq-a">
-            Yes. Many clients come to me with existing coverage that feels too expensive or confusing.
-            I can review what you have, outline alternatives, and help you decide whether to adjust or switch.
+          <div class="faq-item">
+            <div class="faq-q">Can you help if I already have coverage?</div>
+            <div class="faq-a">
+              Yes. Many clients come to me with existing coverage that feels too expensive or confusing.
+              I can review what you have, outline alternatives, and help you decide whether to adjust or switch.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Will you still help me after I enroll?</div>
+            <div class="faq-a">
+              Absolutely. I come with every policy I help you sign up for. That means you can call or message me for
+              questions, life changes, or issues instead of starting over with a stranger.
+            </div>
           </div>
         </div>
+      </section>
 
-        <div class="faq-item">
-          <div class="faq-q">Will you still help me after I enroll?</div>
-          <div class="faq-a">
-            Absolutely. I come with every policy I help you sign up for. That means you can call or
-            message me for questions, life changes, or issues instead
+      <!-- CONTACT -->
+      <section class="section" id="contact">
+        <div class="contact-grid">
+          <div>
+            <div class="badge">Let's talk</div>
+            <h2 class="section-title">Ready to review your coverage?</h2>
+            <p class="section-subtitle">
+              Schedule a quick call or send a note. I’ll help you compare options, explore marketplace alternatives, and
+              get a plan that fits your budget and health priorities.
+            </p>
+
+            <div class="list">
+              <div class="list-item">
+                <span class="list-bullet">1.</span>
+                <span>Share a few details about your household, business, and budget.</span>
+              </div>
+              <div class="list-item">
+                <span class="list-bullet">2.</span>
+                <span>I’ll outline options, including alternatives to the public marketplace.</span>
+              </div>
+              <div class="list-item">
+                <span class="list-bullet">3.</span>
+                <span>When you’re ready, I handle enrollment and stay available for ongoing support.</span>
+              </div>
+            </div>
+
+            <div class="card" style="margin-top: 1rem;">
+              <h3>Reach out directly</h3>
+              <div class="info-grid" style="margin-top: 0.6rem;">
+                <div>
+                  <div class="info-item-label">Call / Text</div>
+                  <div class="info-item-value">
+                    <a href="tel:+12393108926">(239) 310-8926</a><br />
+                    <a href="tel:+19703065173">(970) 306-5173</a>
+                  </div>
+                </div>
+                <div>
+                  <div class="info-item-label">Email</div>
+                  <div class="info-item-value">
+                    <a href="mailto:bradyw.health@gmail.com">bradyw.health@gmail.com</a><br />
+                    <a href="mailto:brighterhealthsolutions@gmail.com">brighterhealthsolutions@gmail.com</a>
+                  </div>
+                </div>
+              </div>
+              <p class="helper" style="margin-top: 0.4rem;">You’ll always speak directly with Brady — never a call center.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Book a call online</h3>
+            <p class="helper">Send a quick note and I’ll respond promptly with next steps.</p>
+            <form action="https://formspree.io/f/mgvgleje" method="POST" data-formspree="true" data-success-message="Thanks! I'll follow up shortly.">
+              <div class="field-group">
+                <label for="name">Full name</label>
+                <input id="name" name="name" type="text" required />
+              </div>
+
+              <div class="field-group">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" required />
+              </div>
+
+              <div class="field-group">
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" type="tel" placeholder="(555) 123-4567" />
+                <p class="helper">Include your preferred contact method and time.</p>
+              </div>
+
+              <div class="field-group">
+                <label for="coverage">Who needs coverage?</label>
+                <select id="coverage" name="coverage" required>
+                  <option value="">Select one</option>
+                  <option value="individual">Individual</option>
+                  <option value="family">Family</option>
+                  <option value="small-business">Small business team</option>
+                  <option value="self-employed">Self-employed / 1099</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="field-group">
+                <label for="details">Anything else I should know?</label>
+                <textarea id="details" name="details" placeholder="Share your goals, budget, and current coverage (optional)"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Send message</button>
+              <p class="disclaimer">By submitting, you consent to being contacted by Brighter Health Solutions LLC.</p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast" id="form-toast" role="status" aria-live="polite"></div>
+
+    <footer>
+      <div class="footer-inner">
+        <div>© <span id="year"></span> Brighter Health Solutions LLC. Licensed independent health insurance advisor.</div>
+        <div class="footer-social">
+          <a href="tel:+12393108926">Call: (239) 310-8926</a>
+          <a href="mailto:bradyw.health@gmail.com">Email: bradyw.health@gmail.com</a>
+          <a href="https://www.instagram.com/healthwithbrady" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Keep the footer year current
+    (function updateYear() {
+      var yearEl = document.getElementById('year');
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+    })();
+
+    // Simple toast function
+    function showToast(message, isError) {
+      var toast = document.getElementById('form-toast');
+      if (!toast) return;
+
+      toast.textContent = message;
+      toast.classList.remove('error');
+
+      if (isError) {
+        toast.classList.add('error');
+      }
+
+      toast.classList.add('show');
+
+      setTimeout(function () {
+        toast.classList.remove('show');
+      }, 4000);
+    }
+
+    // Attach Formspree AJAX handler to any form marked with data-formspree
+    document.addEventListener('DOMContentLoaded', function () {
+      var forms = document.querySelectorAll('form[data-formspree="true"]');
+      forms.forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          event.preventDefault();
+
+          var submitButton = form.querySelector('button[type="submit"]');
+          var originalText = submitButton ? submitButton.textContent : '';
+
+          if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+          }
+
+          fetch(form.action, {
+            method: form.method,
+            body: new FormData(form),
+            headers: {
+              'Accept': 'application/json'
+            }
+          })
+            .then(function (response) {
+              if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.textContent = originalText;
+              }
+
+              if (response.ok) {
+                var successMessage = form.getAttribute('data-success-message') || 'Thank you! Your message has been sent.';
+                showToast(successMessage, false);
+                form.reset();
+              } else {
+                showToast('Something went wrong. Please try again or contact me directly.', true);
+              }
+            })
+            .catch(function () {
+              if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.textContent = originalText;
+              }
+
+              showToast('Network error. Please try again or reach out by phone/email.', true);
+            });
+        });
+      });
+    });
+  </script>
+  </body>
+</html>
